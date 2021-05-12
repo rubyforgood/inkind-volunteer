@@ -1,0 +1,47 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 2019,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+  "extends": ["eslint:recommended"],
+  "rules": {
+    "strict": ["error", "never"],
+    "react/prop-types": ["off"]
+    // "sonarjs/cognitive-complexity": ["error", 5],
+    // "max-lines-per-function": ["error", 40],
+    // "semi": 0,
+    // "valid-typeof": "error",
+    // "no-unsafe-negation": "error",
+    // "no-unused-vars": "error",
+    // "no-unexpected-multiline": "error",
+    // "no-undef": "error"
+  },
+  "env": {
+    "jest": true,
+    "browser": true,
+    "node": true
+  },
+  "overrides": [
+    {
+      "files": "**/*.+(ts|tsx)",
+      "parser": "@typescript-eslint/parser",
+      "parserOptions": {
+        "project": "./tsconfig.json"
+      },
+      "plugins": ["@typescript-eslint/eslint-plugin"],
+      "extends": [
+        "plugin:@typescript-eslint/eslint-recommended",
+        "plugin:@typescript-eslint/recommended"
+      ]
+    }
+  ]
+}
