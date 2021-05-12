@@ -4,11 +4,28 @@ export const handlers = [
   rest.post("/login", (req, res, ctx) => {
     return res(
       ctx.json({
-        auth_token: "f79e82e8-c34a-4dc7-a49e-9fadc0979fda",
+        authToken: "f79e82e8-c34a-4dc7-a49e-9fadc0979fda",
         user: {
           firstName: "Valerie",
           lastName: "Volunteer",
         },
+      })
+    );
+  }),
+
+  rest.get("/students", (req, res, ctx) => {
+    return res(
+      ctx.json({
+        students: [
+          {
+            firstName: "Joe",
+            lastName: "Student",
+          },
+          {
+            firstName: "Jane",
+            lastName: "Student",
+          },
+        ],
       })
     );
   }),

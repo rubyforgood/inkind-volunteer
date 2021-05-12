@@ -7,7 +7,7 @@ interface LoginProps {
 }
 
 type UserResponse = {
-  userToken: string;
+  authToken: string;
   user: User;
 };
 
@@ -25,7 +25,8 @@ export const Login = ({ setAuthToken, setUser }: LoginProps): JSX.Element => {
     });
 
     const userResponse = (await response.json()) as UserResponse;
-    setAuthToken(userResponse.userToken);
+    console.log(userResponse);
+    setAuthToken(userResponse.authToken);
     setUser(userResponse.user);
   };
 
