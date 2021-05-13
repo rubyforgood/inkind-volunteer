@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  flex-grow: 1;
+  margin: 0.5rem 0;
+}

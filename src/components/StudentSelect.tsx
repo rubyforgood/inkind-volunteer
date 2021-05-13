@@ -11,16 +11,19 @@ export const StudentSelect = ({
   onChange,
 }: StudentSelectProps): JSX.Element => {
   return (
-    <select onChange={onChange} name="studentId">
-      {students.map((student: Student) => {
-        const fullName = `${student.firstName} ${student.lastName}`;
+    <>
+      <label htmlFor="studentId">Met with:</label>
+      <select className="form-select" onChange={onChange} name="studentId">
+        {students.map((student: Student) => {
+          const fullName = `${student.firstName} ${student.lastName}`;
 
-        return (
-          <option value={student.id} key={student.id}>
-            {fullName}
-          </option>
-        );
-      })}
-    </select>
+          return (
+            <option value={student.id} key={student.id}>
+              {fullName}
+            </option>
+          );
+        })}
+      </select>
+    </>
   );
 };

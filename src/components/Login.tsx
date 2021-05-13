@@ -25,7 +25,6 @@ export const Login = ({ setAuthToken, setUser }: LoginProps): JSX.Element => {
     });
 
     const userResponse = (await response.json()) as UserResponse;
-    console.log(userResponse);
     setAuthToken(userResponse.authToken);
     setUser(userResponse.user);
   };
