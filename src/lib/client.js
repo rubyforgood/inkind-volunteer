@@ -1,9 +1,10 @@
-const apiURL = "http://localhost:3000"; //process.env.REACT_APP_API_URL
+//const apiURL = "http://localhost:3000"; //process.env.REACT_APP_API_URL
 
 async function client(
   endpoint,
   { data = null, token, headers: customHeaders = {}, ...customConfig } = {}
 ) {
+  console.log("customConfig", customConfig);
   const config = {
     method: data ? "POST" : "GET",
     body: data ? JSON.stringify(data) : undefined,
@@ -15,23 +16,22 @@ async function client(
     ...customConfig,
   };
 
-  return window
-    .fetch(`${apiURL}/${endpoint}`, config)
-    .then(async (response) => {
-      // if (response.status === 401) {
-      //   QueryCache.clear();
-      //   await auth.logout();
-      //   // refresh the page for them
-      //   window.location.assign(window.location);
-      //   return Promise.reject({ message: "Please re-authenticate." });
-      // }
-      const data = await response.json();
-      if (response.ok) {
-        return data;
-      } else {
-        return Promise.reject(data);
-      }
-    });
+  console.log("config", config);
+  return window.fetch(`${endpoint}`, config).then(async (response) => {
+    // if (response.status === 401) {
+    //   QueryCache.clear();
+    //   await auth.logout();
+    //   // refresh the page for them
+    //   window.location.assign(window.location);
+    //   return Promise.reject({ message: "Please re-authenticate." });
+    // }
+    const data = await response.json();
+    if (response.ok) {
+      return data;
+    } else {
+      return Promise.reject(data);
+    }
+  });
 }
 
 export { client };

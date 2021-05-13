@@ -20,3 +20,5 @@ afterAll(() => {
   // Clean up once the tests are done.
   server.close();
 });
+
+global.XMLHttpRequest = undefined;

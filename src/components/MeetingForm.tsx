@@ -31,6 +31,7 @@ export const MeetingForm = ({
       <h2>Record Meeting</h2>
       <form>
         <StudentSelect students={students} />
+        <input type="date" id="meeting-date"></input>
       </form>
     </div>
   );
