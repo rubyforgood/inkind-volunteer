@@ -9,7 +9,10 @@ const queryClient = new QueryClient();
 
 const App = (): JSX.Element => {
   const [authToken, setAuthToken] = useState("asdfsdf");
-  const [user, setUser] = useState<User>();
+  const [user, setUser] = useState<User>({
+    firstName: "George",
+    lastName: "Plimpton",
+  });
 
   return (
     <QueryClientProvider client={queryClient}>

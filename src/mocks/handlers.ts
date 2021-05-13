@@ -18,10 +18,12 @@ export const handlers = [
       ctx.json({
         students: [
           {
+            id: 1,
             firstName: "Joe",
             lastName: "Student",
           },
           {
+            id: 2,
             firstName: "Jane",
             lastName: "Student",
           },

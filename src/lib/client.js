@@ -4,7 +4,6 @@ async function client(
   endpoint,
   { data = null, token, headers: customHeaders = {}, ...customConfig } = {}
 ) {
-  console.log("customConfig", customConfig);
   const config = {
     method: data ? "POST" : "GET",
     body: data ? JSON.stringify(data) : undefined,
@@ -16,7 +15,6 @@ async function client(
     ...customConfig,
   };
 
-  console.log("config", config);
   return window.fetch(`${endpoint}`, config).then(async (response) => {
     // if (response.status === 401) {
     //   QueryCache.clear();
