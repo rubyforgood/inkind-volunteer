@@ -20,7 +20,7 @@ export const MeetingForm = ({
   });
 
   if (isLoading) {
-    return <></>;
+    return <div>Loading ....</div>;
   }
 
   return (
