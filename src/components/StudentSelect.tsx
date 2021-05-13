@@ -2,12 +2,23 @@ import { Student } from "models/Student";
 import React from "react";
 
 interface StudentSelectProps {
-  options: Student[];
+  students: Student[];
 }
-export const StudentSelect = ({ options }: StudentSelectProps): JSX.Element => (
-  <select>
-    {options.map((student) => (
-      <option value={student.firstName} />
-    ))}
-  </select>
-);
+
+export const StudentSelect = ({
+  students,
+}: StudentSelectProps): JSX.Element => {
+  return (
+    <select>
+      {students.map((student: Student) => {
+        const fullName = `${student.firstName} ${student.lastName}`;
+
+        return (
+          <option value={fullName} key={fullName}>
+            {fullName}
+          </option>
+        );
+      })}
+    </select>
+  );
+};

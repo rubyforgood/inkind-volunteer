@@ -41,7 +41,7 @@ export const Login = ({ setAuthToken, setUser }: LoginProps): JSX.Element => {
             <input
               type="email"
               name="email"
-              id=""
+              id="email"
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-blue-300 "
               placeholder="Johnbull@example.com"
               onBlur={(event: React.FormEvent) =>
@@ -56,7 +56,7 @@ export const Login = ({ setAuthToken, setUser }: LoginProps): JSX.Element => {
             <input
               type="password"
               name="password"
-              id=""
+              id="password"
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-blue-300"
               placeholder="Enter your password"
               onBlur={(event: React.FormEvent) =>
