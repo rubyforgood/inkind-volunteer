@@ -37,10 +37,11 @@ export const MeetingForm = ({
 
   return (
     <>
-      <h1>
-        Welcome, {user.firstName} {user.lastName}!
+      <h1 className="text-lg font-semibold py-2">
+        Hi, {user.firstName}!
       </h1>
-      <h2>Record Meeting</h2>
+      <h2 className="text-lg font-semibold py-2 text-left">My Students</h2>
+
       <Formik
         initialValues={{ studentId: null, meetingDate: meetingDate }}
         onSubmit={(values, { setSubmitting }) => {
@@ -65,8 +66,15 @@ export const MeetingForm = ({
               type="date"
               onBlur={handleBlur}
               onChange={(event) => setMeetingDate(event.target.value)}
+              className=" w-full focus:ring-indigo-500 focus:border-indigo-500 flex-1 bg-green-50 py-2"
             />
-            <button type="submit" disabled={isSubmitting}>
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className="inline-flex justify-center py-2 px-4 my-4 border border-transparent
+                         shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600
+                         hover:bg-indigo-700 focus:outline-none focus:ring-2
+                         focus:ring-offset-2 focus:ring-indigo-500">
               Submit
             </button>
           </Form>

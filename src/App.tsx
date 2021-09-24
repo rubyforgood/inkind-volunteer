@@ -16,7 +16,7 @@ const App = (): JSX.Element => {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <div className="App">
+      <div className="App p-9">
         {authToken?.length && !!user ? (
           <MeetingForm authToken={authToken} user={user} />
         ) : (
