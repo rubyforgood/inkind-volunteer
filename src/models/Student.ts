@@ -1,6 +1,3 @@
-export interface Student {
-  id: number;
-  firstName: string;
-  lastName: string;
-  dateOfBirth: Date;
-}
+import { GetStudents_students } from './../graphql/queries/__generated__/GetStudents';
+
+export type Student = GetStudents_students

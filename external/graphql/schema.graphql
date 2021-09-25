@@ -36,6 +36,7 @@ type SignInUserPayload {
 
 type Student {
   createdAt: ISO8601DateTime!
+  dateOfBirth: ISO8601DateTime
   email: String
   id: ID!
   name: String!

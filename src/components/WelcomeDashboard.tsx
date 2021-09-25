@@ -5,13 +5,16 @@ import { User } from "models/User";
 import { StudentSelect } from "./StudentSelect";
 import { SessionSelect } from "./SessionSelect";
 import { Form, Formik } from "formik";
+import { useQuery as useApolloQuery } from "@apollo/client";
+import { GetStudents } from "graphql/queries/GetStudents";
+import { QueryError } from "QueryError";
+import { GetStudents as GetStudentsType } from "graphql/queries/__generated__/GetStudents";
+
 interface WelcomeDashboardProps {
-  authToken: string;
   user: User;
 }
 
 export const WelcomeDashboard = ({
-  authToken,
   user,
 }: WelcomeDashboardProps): JSX.Element => {
   const [meetingDate, setMeetingDate] = React.useState(
@@ -19,24 +22,28 @@ export const WelcomeDashboard = ({
   );
   const [studentId, setStudentId] = React.useState<number | null>(null);
 
-  const { data: students, isLoading} = useQuery({
-    queryKey: "students",
-    queryFn: () =>
-      client("students", { token: authToken }).then((data) => data.students)
-  });
+  const { data, loading, error } = useApolloQuery<GetStudentsType>(GetStudents)
+  // const { data: students, isLoading} = useQuery({
+  //   queryKey: "students",
+  //   queryFn: () =>
+  //     client("students", { token: authToken }).then((data) => data.students)
+  // });
+  // console.log("students", students);
 
-  console.log("students", students);
-
-  const { data: sessions, isLoading:studentsLoading } = useQuery({
+  const { data: sessions, isLoading: studentsLoading } = useQuery({
     queryKey: "sessions",
     queryFn: () =>
-      client("sessions", { token: authToken }).then((data) => data.sessions)
+      client("sessions", { token: 'asdf' }).then((data) => data.sessions)
   });
 
   console.log("sessions", sessions);
 
-  if (isLoading || studentsLoading) {
+  if (loading || studentsLoading) {
     return <div>Loading ....</div>;
+  }
+
+  if (error) {
+    return <QueryError error={error} />
   }
 
   const onStudentChange = (event: React.ChangeEvent): void => {
@@ -47,7 +54,7 @@ export const WelcomeDashboard = ({
   return (
     <>
       <h1 className="text-lg font-semibold py-2">
-        Hi, {user.firstName}!
+        Hi, {user.name}! ({user.email}, {user.role})
       </h1>
       <p className="text-lg font-semibold py-2 text-left">My Students</p>
 
@@ -58,16 +65,10 @@ export const WelcomeDashboard = ({
         }}
       >
         {({
-          values,
-          errors,
-          touched,
-          handleChange,
-          handleBlur,
           handleSubmit,
-          isSubmitting,
         }) => (
           <Form onSubmit={handleSubmit}>
-            <StudentSelect onChange={onStudentChange} students={students} />
+            <StudentSelect onChange={onStudentChange} students={data?.students || []} />
             <SessionSelect sessions={sessions} />
           </Form>
         )}

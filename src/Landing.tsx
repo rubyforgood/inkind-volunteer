@@ -22,7 +22,7 @@ export const Landing = (): JSX.Element => {
   return (
     <div className="App">
       {user ? (
-        <WelcomeDashboard authToken={"asdf"} user={user} />
+        <WelcomeDashboard user={user} />
       ) : (
         <Login setUser={setUser} />
       )}

@@ -12,9 +12,6 @@ export const StudentSelect = ({
   return (
     <div>
       {students.map((student: Student) => {
-        const fullName = `${student.firstName} ${student.lastName}`;
-        const age = `${student.dateOfBirth}`;
-
         return (
           <>
             <div className="w-full inline-block text-left my-2 bg-green-50 p-2">
@@ -22,8 +19,8 @@ export const StudentSelect = ({
                 <input type="radio" value={student.id} key={student.id} className="mx-4 hidden" onChange={onChange} name="studentId" />
                 <label className="block">
                   <img src="" className="text-center rounded-full bg-red-200 w-10 h-10 inline-block mr-3" />
-                  {fullName}
-                  <p className="text-xs block pl-12"> Age {age}</p>
+                  {student.name}
+                  <p className="text-xs block pl-12">{student.dateOfBirth}</p>
                 </label>
               </div>
             </div>
