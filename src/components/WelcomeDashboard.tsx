@@ -3,30 +3,39 @@ import { useQuery } from "react-query";
 import { client } from "lib/client";
 import { User } from "models/User";
 import { StudentSelect } from "./StudentSelect";
+import { SessionSelect } from "./SessionSelect";
 import { Form, Formik } from "formik";
-interface MeetingFormProps {
+interface WelcomeDashboardProps {
   authToken: string;
   user: User;
 }
 
-export const MeetingForm = ({
+export const WelcomeDashboard = ({
   authToken,
   user,
-}: MeetingFormProps): JSX.Element => {
+}: WelcomeDashboardProps): JSX.Element => {
   const [meetingDate, setMeetingDate] = React.useState(
     new Date().toLocaleDateString("en-CA")
   );
   const [studentId, setStudentId] = React.useState<number | null>(null);
 
-  const { data: students, isLoading } = useQuery({
+  const { data: students, isLoading} = useQuery({
     queryKey: "students",
     queryFn: () =>
-      client("students", { token: authToken }).then((data) => data.students),
+      client("students", { token: authToken }).then((data) => data.students)
   });
 
   console.log("students", students);
 
-  if (isLoading) {
+  const { data: sessions, isLoading:studentsLoading } = useQuery({
+    queryKey: "sessions",
+    queryFn: () =>
+      client("sessions", { token: authToken }).then((data) => data.sessions)
+  });
+
+  console.log("sessions", sessions);
+
+  if (isLoading || studentsLoading) {
     return <div>Loading ....</div>;
   }
 
@@ -40,7 +49,7 @@ export const MeetingForm = ({
       <h1 className="text-lg font-semibold py-2">
         Hi, {user.firstName}!
       </h1>
-      <h2 className="text-lg font-semibold py-2 text-left">My Students</h2>
+      <p className="text-lg font-semibold py-2 text-left">My Students</p>
 
       <Formik
         initialValues={{ studentId: null, meetingDate: meetingDate }}
@@ -59,24 +68,7 @@ export const MeetingForm = ({
         }) => (
           <Form onSubmit={handleSubmit}>
             <StudentSelect onChange={onStudentChange} students={students} />
-            <input
-              value={meetingDate}
-              name="meetingDate"
-              id="meeting-date"
-              type="date"
-              onBlur={handleBlur}
-              onChange={(event) => setMeetingDate(event.target.value)}
-              className=" w-full focus:ring-indigo-500 focus:border-indigo-500 flex-1 bg-green-50 py-2"
-            />
-            <button
-              type="submit"
-              disabled={isSubmitting}
-              className="inline-flex justify-center py-2 px-4 my-4 border border-transparent
-                         shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600
-                         hover:bg-indigo-700 focus:outline-none focus:ring-2
-                         focus:ring-offset-2 focus:ring-indigo-500">
-              Submit
-            </button>
+            <SessionSelect sessions={sessions} />
           </Form>
         )}
       </Formik>
