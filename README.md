@@ -44,3 +44,13 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+# Working with GraphQL
+
+## Available Scripts
+
+### `yarn schema`
+
+1. Make sure the [cep-backend project](https://github.com/rubyforgood/cep-backend) is running on your local development machine.
+2. Run `yarn schema` to regenerate all graphql Typescript files.
+

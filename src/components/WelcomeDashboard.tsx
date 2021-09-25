@@ -1,14 +1,14 @@
 import React from "react";
-import { useQuery } from "react-query";
+import { useQuery as useLegacyQuery } from "react-query";
 import { client } from "lib/client";
 import { User } from "models/User";
 import { StudentSelect } from "./StudentSelect";
 import { SessionSelect } from "./SessionSelect";
 import { Form, Formik } from "formik";
-import { useQuery as useApolloQuery } from "@apollo/client";
-import { GetStudents } from "graphql/queries/GetStudents";
+import { useQuery } from "@apollo/client";
+import { GetStudentsQuery } from "graphql/queries/GetStudents";
 import { QueryError } from "QueryError";
-import { GetStudents as GetStudentsType } from "graphql/queries/__generated__/GetStudents";
+import { GetStudents } from "graphql/queries/__generated__/GetStudents";
 
 interface WelcomeDashboardProps {
   user: User;
@@ -22,15 +22,9 @@ export const WelcomeDashboard = ({
   );
   const [studentId, setStudentId] = React.useState<number | null>(null);
 
-  const { data, loading, error } = useApolloQuery<GetStudentsType>(GetStudents)
-  // const { data: students, isLoading} = useQuery({
-  //   queryKey: "students",
-  //   queryFn: () =>
-  //     client("students", { token: authToken }).then((data) => data.students)
-  // });
-  // console.log("students", students);
+  const { data, loading, error } = useQuery<GetStudents>(GetStudentsQuery)
 
-  const { data: sessions, isLoading: studentsLoading } = useQuery({
+  const { data: sessions, isLoading: studentsLoading } = useLegacyQuery({
     queryKey: "sessions",
     queryFn: () =>
       client("sessions", { token: 'asdf' }).then((data) => data.sessions)

@@ -38,7 +38,7 @@
     "format": "yarn run prettier -- --write",
     "check-format": "yarn run prettier -- --list-different",
     "validate": "yarn-run-all --parallel check-types check-format lint build",
-    "schema": "cp -vR ../cep-backend/export/* external/; apollo codegen:generate --localSchemaFile=./external/graphql/schema.json --target=typescript"
+    "schema": "apollo service:download --endpoint=http://localhost:3001/graphql external/graphql/schema.json; apollo codegen:generate --localSchemaFile=./external/graphql/schema.json --target=typescript"
   },
   "eslintConfig": {
     "extends": [
