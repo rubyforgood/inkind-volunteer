@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { MeetingForm } from "components/MeetingForm";
+import { WelcomeDashboard } from "components/WelcomeDashboard";
+
 import { User } from "models/User";
 import { QueryClient, QueryClientProvider } from "react-query";
 import "./App.css";
@@ -18,7 +19,7 @@ const App = (): JSX.Element => {
     <QueryClientProvider client={queryClient}>
       <div className="App p-9">
         {authToken?.length && !!user ? (
-          <MeetingForm authToken={authToken} user={user} />
+          <WelcomeDashboard authToken={authToken} user={user} />
         ) : (
           <Login setAuthToken={setAuthToken} setUser={setUser} />
         )}

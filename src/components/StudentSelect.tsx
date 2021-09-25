@@ -13,14 +13,16 @@ export const StudentSelect = ({
     <div>
       {students.map((student: Student) => {
         const fullName = `${student.firstName} ${student.lastName}`;
+        const age = `${student.dateOfBirth}`;
 
         return (
           <>
             <div className="w-full inline-block text-left my-2 bg-green-50">
-              <input type="radio" value={student.id} key={student.id} className="mx-4" onChange={onChange} name="studentId" />
+              <input type="radio" value={student.id} key={student.id} className="mx-4 hidden" onChange={onChange} name="studentId" />
               <label className="inline-block">
                 {fullName}
               </label>
+              <p>{age}</p>
             </div>
           </>
         );
