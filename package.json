@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@apollo/client": "^3.4.13",
     "@craco/craco": "^6.1.2",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
@@ -11,7 +12,9 @@
     "@types/node": "^12.0.0",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
+    "apollo": "^2.33.6",
     "formik": "^2.2.6",
+    "graphql": "^15.6.0",
     "msw": "^0.28.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -34,7 +37,8 @@
     "prettier": "prettier --ignore-path .gitignore \"**/*.+(js|json|ts|tsx)\"",
     "format": "yarn run prettier -- --write",
     "check-format": "yarn run prettier -- --list-different",
-    "validate": "yarn-run-all --parallel check-types check-format lint build"
+    "validate": "yarn-run-all --parallel check-types check-format lint build",
+    "schema": "cp -vR ../cep-backend/export/* external/; apollo codegen:generate --localSchemaFile=./external/graphql/schema.json --target=typescript"
   },
   "eslintConfig": {
     "extends": [

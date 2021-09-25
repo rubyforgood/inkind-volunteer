@@ -1,34 +1,40 @@
+import { useMutation } from "@apollo/client";
+import { SignInMutation } from "graphql/mutations/SignInMutation";
 import { User } from "models/User";
 import React, { useState } from "react";
 
 interface LoginProps {
-  setAuthToken: (arg: string) => void;
   setUser: (arg: User) => void;
 }
 
-type UserResponse = {
-  authToken: string;
-  user: User;
-};
-
-export const Login = ({ setAuthToken, setUser }: LoginProps): JSX.Element => {
+export const Login = ({ setUser }: LoginProps): JSX.Element => {
   const [userEmail, setUserEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
-  const onSubmit = async () => {
-    const response: Response = await fetch("/login", {
-      method: "POST",
-      body: JSON.stringify({
-        userEmail,
-        password,
-      }),
-    });
+  const [login, { client, error }] = useMutation(SignInMutation, {
+    variables: {
+      credentials: {
+        email: userEmail,
+        password: password,
+      },
+    },
+    onCompleted: ({ signInUser }) => {
+      setUser(signInUser.user);
+      client.clearStore();
+    },
+    onError: (error) => {
+      console.error("[failed login]", error);
+    },
+  });
 
-    const userResponse = (await response.json()) as UserResponse;
-    console.log(userResponse);
-    setAuthToken(userResponse.authToken);
-    setUser(userResponse.user);
-  };
+  if (error) {
+    return (
+      <p>
+        Error!
+        <pre>{JSON.stringify(error.clientErrors, null, "  ")}</pre>
+      </p>
+    );
+  }
 
   return (
     <section className="App h-screen w-full flex justify-center items-center bg-green-500">
@@ -68,7 +74,7 @@ export const Login = ({ setAuthToken, setUser }: LoginProps): JSX.Element => {
             <button
               className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
               type="button"
-              onClick={onSubmit}
+              onClick={() => login()}
             >
               Sign In
             </button>

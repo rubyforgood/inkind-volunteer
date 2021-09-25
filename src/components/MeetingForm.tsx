@@ -38,8 +38,9 @@ export const MeetingForm = ({
   return (
     <>
       <h1 className="text-lg font-semibold py-2">
-        Hi, {user.firstName}!
+        Hi, {user.name}!
       </h1>
+
       <h2 className="text-lg font-semibold py-2 text-left">My Students</h2>
 
       <Formik

@@ -1,30 +1,34 @@
-import React, { useState } from "react";
-import { WelcomeDashboard } from "components/WelcomeDashboard";
-
-import { User } from "models/User";
+import React from "react";
 import { QueryClient, QueryClientProvider } from "react-query";
+import {
+  ApolloClient,
+  ApolloProvider,
+  createHttpLink,
+  InMemoryCache,
+  NormalizedCacheObject,
+} from "@apollo/client";
 import "./App.css";
-import { Login } from "./components/Login";
+import { Landing } from "Landing";
 
 const queryClient = new QueryClient();
 
-const App = (): JSX.Element => {
-  const [authToken, setAuthToken] = useState("asdfsdf");
-  const [user, setUser] = useState<User>({
-    firstName: "George",
-    lastName: "Plimpton",
-  });
+const link = createHttpLink({
+  uri: "http://localhost:3001/graphql",
+  credentials: "include",
+});
 
+const apolloClient: ApolloClient<NormalizedCacheObject> = new ApolloClient({
+  cache: new InMemoryCache(),
+  link,
+});
+
+const App = (): JSX.Element => {
   return (
-    <QueryClientProvider client={queryClient}>
-      <div className="App p-9">
-        {authToken?.length && !!user ? (
-          <WelcomeDashboard authToken={authToken} user={user} />
-        ) : (
-          <Login setAuthToken={setAuthToken} setUser={setUser} />
-        )}
-      </div>
-    </QueryClientProvider>
+    <ApolloProvider client={apolloClient}>
+      <QueryClientProvider client={queryClient}>
+        <Landing />
+      </QueryClientProvider>
+    </ApolloProvider>
   );
 };
 
