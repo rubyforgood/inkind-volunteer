@@ -47,26 +47,31 @@ export const WelcomeDashboard = ({
 
   return (
     <>
-      <h1 className="text-lg font-semibold py-2">
-        Hi, {user.name}! ({user.email}, {user.role})
-      </h1>
-      <p className="text-lg font-semibold py-2 text-left">My Students</p>
+      <section className="App h-screen w-full flex justify-center items-center flex-col px-8 py-8 pt-8">
+        <div className="w-full max-w-md">
+          <h1 className="text-lg font-semibold py-2">
+            Hi, {user.name}!
+          </h1>
+          <p className="text-xs block">({user.email}, {user.role})</p>
+          <p className="text-lg font-semibold py-2 text-left">My Students</p>
 
-      <Formik
-        initialValues={{ studentId: null, meetingDate: meetingDate }}
-        onSubmit={(values, { setSubmitting }) => {
-          setSubmitting(false);
-        }}
-      >
-        {({
-          handleSubmit,
-        }) => (
-          <Form onSubmit={handleSubmit}>
-            <StudentSelect onChange={onStudentChange} students={data?.students || []} />
-            <SessionSelect sessions={sessions} />
-          </Form>
-        )}
-      </Formik>
+          <Formik
+            initialValues={{ studentId: null, meetingDate: meetingDate }}
+            onSubmit={(values, { setSubmitting }) => {
+              setSubmitting(false);
+            }}
+          >
+            {({
+              handleSubmit,
+            }) => (
+              <Form onSubmit={handleSubmit}>
+                <StudentSelect onChange={onStudentChange} students={data?.students || []} />
+                <SessionSelect sessions={sessions} />
+              </Form>
+            )}
+          </Formik>
+        </div>
+      </section>
     </>
   );
 };
