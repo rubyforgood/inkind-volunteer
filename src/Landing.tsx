@@ -1,5 +1,5 @@
 import { Login } from "components/Login";
-        import { WelcomeDashboard } from "components/WelcomeDashboard";
+import { WelcomeDashboard } from "components/WelcomeDashboard";
 import { GetCurrentUser } from "graphql/queries/GetCurrentUser";
 import { QueryError } from "QueryError";
 import { useState } from "react";
@@ -11,7 +11,6 @@ export const Landing = (): JSX.Element => {
 
   const { loading, error } = useQuery(GetCurrentUser, {
     onCompleted: ({ currentUser }) => {
-      console.log("[resp]", currentUser);
       setUser(currentUser);
     },
   });

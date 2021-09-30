@@ -4,6 +4,7 @@ import { client } from "lib/client";
 import { User } from "models/User";
 import { StudentSelect } from "./StudentSelect";
 import { Form, Formik } from "formik";
+
 interface MeetingFormProps {
   authToken: string;
   user: User;
@@ -23,8 +24,6 @@ export const MeetingForm = ({
     queryFn: () =>
       client("students", { token: authToken }).then((data) => data.students),
   });
-
-  console.log("students", students);
 
   if (isLoading) {
     return <div>Loading ....</div>;

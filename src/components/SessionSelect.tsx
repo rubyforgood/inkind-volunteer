@@ -1,17 +1,22 @@
-import { Session } from "models/Session";
+import { SurveyResponse } from "models/SurveyResponse";
 import React from "react";
-interface SessionSelectProps {
-  sessions: Session[];
-}
+import { useQuery } from "@apollo/client";
+import { GetSurveyResponsesQuery } from "graphql/queries/GetSurveyResponses";
+import { QueryError } from "QueryError";
+import { GetSurveyResponses } from "graphql/queries/__generated__/GetSurveyResponses";
 
-export const SessionSelect = ({
-  sessions,
-}: SessionSelectProps): JSX.Element => {
+export const SessionSelect = (): JSX.Element => {
+  const { data, loading, error } = useQuery<GetSurveyResponses>(GetSurveyResponsesQuery)
+  if (loading) { return <div>Loading ....</div> }
+  if (error) { return <QueryError error={error} /> }
+
+  console.log(data?.surveyResponses)
+
   return (
     <div>
       <p className="text-lg font-semibold py-2 text-left">Recent Sessions</p>
 
-      {sessions.length === 0 &&
+      {data?.surveyResponses?.length === 0 &&
         <div className="flex content-around mt-4">
           <p className="text-lg font-semibold py-2 text-center rounded-full bg-red-200 w-64 h-64 pt-24  mx-auto">
             No Sessions
@@ -19,10 +24,9 @@ export const SessionSelect = ({
         </div>
       }
 
-      {sessions?.map((session: Session) => {
-        console.log(sessions.length)
-        const name = `${session.student}`;
-        const date = `${session.date}`;
+      {data?.surveyResponses?.map((response: SurveyResponse) => {
+        const name = `${response.student.name}`;
+        const date = `${response?.meetingDuration?.startedAt}`;
 
         return (
           <>

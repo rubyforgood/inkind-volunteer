@@ -1,6 +1,4 @@
 import React from "react";
-import { useQuery as useLegacyQuery } from "react-query";
-import { client } from "lib/client";
 import { User } from "models/User";
 import { StudentSelect } from "./StudentSelect";
 import { SessionSelect } from "./SessionSelect";
@@ -24,21 +22,8 @@ export const WelcomeDashboard = ({
 
   const { data, loading, error } = useQuery<GetStudents>(GetStudentsQuery)
 
-  const { data: sessions, isLoading: studentsLoading } = useLegacyQuery({
-    queryKey: "sessions",
-    queryFn: () =>
-      client("sessions", { token: 'asdf' }).then((data) => data.sessions)
-  });
-
-  console.log("sessions", sessions);
-
-  if (loading || studentsLoading) {
-    return <div>Loading ....</div>;
-  }
-
-  if (error) {
-    return <QueryError error={error} />
-  }
+  if (loading) { return <div>Loading ....</div> }
+  if (error) { return <QueryError error={error} /> }
 
   const onStudentChange = (event: React.ChangeEvent): void => {
     const selectedStudentId = (event.currentTarget as HTMLInputElement).value;
@@ -66,7 +51,7 @@ export const WelcomeDashboard = ({
             }) => (
               <Form onSubmit={handleSubmit}>
                 <StudentSelect onChange={onStudentChange} students={data?.students || []} />
-                <SessionSelect sessions={sessions} />
+                <SessionSelect />
               </Form>
             )}
           </Formik>

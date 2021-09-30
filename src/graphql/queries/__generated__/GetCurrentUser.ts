@@ -16,5 +16,8 @@ export interface GetCurrentUser_currentUser {
 }
 
 export interface GetCurrentUser {
+  /**
+   * Currently logged in user
+   */
   currentUser: GetCurrentUser_currentUser | null;
 }
