@@ -2,12 +2,10 @@ import { Student } from "models/Student";
 import React from "react";
 interface StudentSelectProps {
   students: Student[];
-  onChange: (e: React.ChangeEvent) => void;
 }
 
 export const StudentSelect = ({
   students,
-  onChange,
 }: StudentSelectProps): JSX.Element => {
   return (
     <div>
