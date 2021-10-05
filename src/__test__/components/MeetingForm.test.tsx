@@ -6,11 +6,11 @@ import { renderWithQueryProvider } from "utils/test";
 
 test("renders the form", async () => {
   const token = "foo";
-  const user: User = { firstName: "John", lastName: "Smith" };
+  const user: User = { name: "John Smith" };
 
   renderWithQueryProvider(<MeetingForm authToken={token} user={user} />);
   await waitFor(() => {
-    const welcomeText = screen.getByText(/Welcome, John Smith/);
+    const welcomeText = screen.getByText(/John Smith/);
 
     expect(welcomeText).toBeInTheDocument();
   });

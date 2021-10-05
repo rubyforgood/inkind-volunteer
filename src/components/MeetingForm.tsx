@@ -21,8 +21,7 @@ export const MeetingForm = ({
 
   const { data: students, isLoading } = useQuery({
     queryKey: "students",
-    queryFn: () =>
-      client("students", { token: authToken }).then((data) => data.students),
+    queryFn: () => client("students", { token: authToken }).then((data) => data.students),
   });
 
   if (isLoading) {
