@@ -3,11 +3,10 @@ import { gql } from '@apollo/client';
 export const GetStudentsQuery = gql`
   query GetStudents {
     students {
-      name
       id
-      email
-      nickname
       dateOfBirth
+      email
+      name
       createdAt
       updatedAt
     }
