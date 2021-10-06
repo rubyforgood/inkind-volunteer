@@ -27,7 +27,7 @@ export const SessionSelect = (): JSX.Element => {
         const date = `${response?.meetingDuration?.startedAt}`
 
         return (
-          <>
+          <React.Fragment key={response.id}>
             <div className="px-2">
               <div className="w-full flex flex-row inline-block text-left my-2 shadow border rounded py-2 px-3 text-gray-700 leading-tight border-blue-300 bg-blue-50">
                 <img src="" className="text-center rounded-full bg-red-200 w-10 h-10 inline-block mr-3 inline-block" />
@@ -37,7 +37,7 @@ export const SessionSelect = (): JSX.Element => {
                 </div>
               </div>
             </div>
-          </>
+          </React.Fragment>
         )
       })}
     </div>

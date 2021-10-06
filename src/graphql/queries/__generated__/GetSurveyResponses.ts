@@ -26,6 +26,7 @@ export interface GetSurveyResponses_surveyResponses_meetingDuration {
 
 export interface GetSurveyResponses_surveyResponses {
   __typename: "SurveyResponse";
+  id: string;
   student: GetSurveyResponses_surveyResponses_student;
   volunteer: GetSurveyResponses_surveyResponses_volunteer;
   meetingDuration: GetSurveyResponses_surveyResponses_meetingDuration | null;
