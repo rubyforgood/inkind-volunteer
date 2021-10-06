@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import { screen, waitFor } from "@testing-library/react";
 import { StudentSelect } from "components/StudentSelect";
 import { Student } from "models/Student";
