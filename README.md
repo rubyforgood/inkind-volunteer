@@ -51,6 +51,6 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 
 ### `yarn schema`
 
-1. Make sure the [cep-backend project](https://github.com/rubyforgood/cep-backend) is running on your local development machine.
+1. Make sure the [inkind-admin project](https://github.com/rubyforgood/inkind-admin) is running on your local development machine.
 2. Run `yarn schema` to regenerate all graphql Typescript files.
 
