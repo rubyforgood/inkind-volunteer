@@ -12,16 +12,12 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [12.x, 14.x]
-
     steps:
     - uses: actions/checkout@v2.3.4
-    - name: Use Node.js ${{ matrix.node-version }}
+    - name: Setup Node
       uses: actions/setup-node@v2
       with:
-        node-version: ${{ matrix.node-version }}
+        node-version: 12.x
         cache: 'yarn'
     - run: yarn install
     - run: yarn lint
