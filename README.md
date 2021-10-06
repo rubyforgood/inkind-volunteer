@@ -1,56 +1,62 @@
-# Getting Started with Create React App
+# InKind - Supporting Community Education Partnerships
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This repository is the frontend code for an application named InKind, which is a [Ruby For Good](https://rubyforgood.org/) project serving [Community Education Partnerships](https://www.cep.ngo/) (CEP).
 
-## Available Scripts
+Community Education Partnerships' mission is to increase the learning opportunities and enhance the academic achievement of students experiencing homelessness and housing insecurity. Community Education Partnerships offers its students: individualized tutoring and mentoring, backpacks, school supplies, books, learning resources, enrollment assistance, and opportunities to participate in extracurricular enrichment activities.
 
-In the project directory, you can run:
+This app allows CEP volunteers to provide feedback from the mentoring sessions that are a core part of CEP's programming. These sessions provide vital stability to young people who lack access to learning opportunities and face a multitude of challenges that affect their educational outcomes. CEP volunteers form lasting relationships with students, and communicate their needs of food insecurity and other necessities to CEP, ensuring that staff members are able to facilitate the appropriate support for students, and by extension, their families. This app will enable CEP to collect and analyze critical data, facilitate quicker response times to requests for support, and enable them to apply for grant funding, ensuring that their work remains sustainable.
 
-### `yarn start`
+The counterpart to this codebase is [`inkind-admin`](https://github.com/rubyforgood/inkind-admin), which is a Ruby on Rails GraphlQL API (and desktop first admin portal).
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+# Welcome Contributors!
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Thanks for checking us out!
+  - Check the `CONTRIBUTING.md` file for a guide on how to get started
+  - This is a 100% volunteer-supported project, please be patient with your correspondence. Most (all?) of us have day jobs and so responses to questions / pending PRs may not be immediate. Please be patient, we'll get to you! :)
 
-### `yarn test`
+Please feel encouraged to join us on Slack! You can sign up at https://rubyforgood.herokuapp.com
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+We're in #team-inkind
 
-### `yarn build`
+# Development
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+This is a TypeScript/React project that uses GraphQL as it's single endpoint. GraphQL schema is checked in to both `inkind` codebases.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+This project was initially setup with [Create React App](https://github.com/facebook/create-react-app). You can learn more this in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started). To learn more about React, check out the [React documentation](https://reactjs.org/).
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+If you are unfamiliar with GraphQL, there is no better time to learn. [HowToGraphQL](https://www.howtographql.com/) is a wonderful interactive tutorial to get acquainted. This project uses [Apollo](https://www.apollographql.com/) to communicate between the backend and fronted.
 
-### `yarn eject`
+## Installation
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Node
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. Install Node.js. We recommend [asdf](https://asdf-vm.com/guide/getting-started.html#_1-install-dependencies) because you can also use this version manager to install Ruby, which is necessary to pull data into this client-side application. [nvm](https://github.com/nvm-sh/nvm) works too!
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Yarn
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+1. Install yarn. With [asdf](https://github.com/twuni/asdf-yarn) this can be accomplished with `asdf plugin-add yarn` & `asdf install yarn latest`
+1. Run `yarn install`
 
-## Learn More
+### Install/Setup InKind Backend
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+1. Proceed to the [installation instructions on `inkind-admin`](https://github.com/rubyforgood/inkind-admin#installation).
+1. After those installation instructions are complete, run a rails server with `bin/rails s` in a shell session and leave it running.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Start project
+
+1. Run `yarn start` in a new shell session. This will open [http://localhost:3000](http://localhost:3000) to view the project in your browser. The page will reload if you make edits. You will also see any lint errors in the console.
+
+### Tests
+
+1. Run `yarn test` This will launch the test runner in the interactive watch mode.
 
 # Working with GraphQL
+
+When you make a change that grabs additional fields from a GraphQL query, OR makes a new request to a mutation, you need to regenerate the GraphQL schema in this repository.
 
 ## Available Scripts
 
 ### `yarn schema`
 
-1. Make sure the [inkind-admin project](https://github.com/rubyforgood/inkind-admin) is running on your local development machine.
+1. Make sure the [inkind-admin project](https://github.com/rubyforgood/inkind-admin) is running on your local development machine (`bin/rails c`).
 2. Run `yarn schema` to regenerate all graphql Typescript files.
-
