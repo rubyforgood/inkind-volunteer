@@ -10,8 +10,6 @@ export const SessionSelect = (): JSX.Element => {
   if (loading) { return <div>Loading ....</div> }
   if (error) { return <QueryError error={error} /> }
 
-  console.log(data?.surveyResponses)
-
   return (
     <div>
       <p className="text-lg font-semibold py-2 text-left">Recent Sessions</p>

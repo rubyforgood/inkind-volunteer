@@ -9,11 +9,10 @@
 
 export interface GetStudents_students {
   __typename: "Student";
-  name: string;
   id: string;
-  email: string | null;
-  nickname: string | null;
   dateOfBirth: any | null;
+  email: string | null;
+  name: string;
   createdAt: any;
   updatedAt: any;
 }

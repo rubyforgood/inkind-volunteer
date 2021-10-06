@@ -21,4 +21,8 @@ afterAll(() => {
   server.close();
 });
 
-global.XMLHttpRequest = undefined;
+// The last line is commented out because it causes a Typescript error.
+// src/setupTests.ts:24:1 - error TS2322: Type 'undefined' is not assignable to type '{ new (): XMLHttpRequest; prototype: XMLHttpRequest; readonly DONE: number; readonly HEADERS_RECEIVED: number; readonly LOADING: number; readonly OPENED: number; readonly UNSENT: number; }'.
+
+// Evaluate reenabling if needed.
+// global.XMLHttpRequest = undefined;
