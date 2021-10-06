@@ -1,4 +1,4 @@
-import { gql } from "@apollo/client";
+import { gql } from "@apollo/client"
 
 export const SignInMutation = gql`
   mutation SignIn($credentials: AuthProviderCredentialsInput!) {
@@ -11,4 +11,4 @@ export const SignInMutation = gql`
       token
     }
   }
-`;
+`

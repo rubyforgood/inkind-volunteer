@@ -4,5 +4,5 @@ export const QueryError = ({ error }: { error: unknown }) => {
     <pre>
       <code>ERROR: {JSON.stringify(error, null, "  ")}</code>
     </pre>
-  );
-};
+  )
+}

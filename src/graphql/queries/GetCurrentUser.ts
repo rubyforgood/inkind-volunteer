@@ -1,4 +1,4 @@
-import { gql } from "@apollo/client";
+import { gql } from "@apollo/client"
 
 export const GetCurrentUser = gql`
   query GetCurrentUser {
@@ -9,4 +9,4 @@ export const GetCurrentUser = gql`
       role
     }
   }
-`;
+`

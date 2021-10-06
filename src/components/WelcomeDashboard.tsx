@@ -1,14 +1,14 @@
-import React from "react";
-import { useQuery } from "@apollo/client";
-import { QueryError } from "QueryError";
+import React from "react"
+import { useQuery } from "@apollo/client"
+import { QueryError } from "QueryError"
 
-import { GetStudentsQuery } from "graphql/queries/GetStudents";
-import { GetStudents } from "graphql/queries/__generated__/GetStudents";
+import { GetStudentsQuery } from "graphql/queries/GetStudents"
+import { GetStudents } from "graphql/queries/__generated__/GetStudents"
 
-import { User } from "models/User";
+import { User } from "models/User"
 
-import { StudentSelect } from "./StudentSelect";
-import { SessionSelect } from "./SessionSelect";
+import { StudentSelect } from "./StudentSelect"
+import { SessionSelect } from "./SessionSelect"
 
 interface WelcomeDashboardProps {
   user: User;
@@ -32,5 +32,5 @@ export const WelcomeDashboard = ({
         <SessionSelect />
       </div>
     </section>
-  );
-};
+  )
+}

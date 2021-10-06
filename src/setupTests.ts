@@ -2,24 +2,24 @@
 // allows you to do things like:
 // expect(element).toHaveTextContent(/react/i)
 // learn more: https://github.com/testing-library/jest-dom
-import "@testing-library/jest-dom";
-import "@testing-library/jest-dom/extend-expect";
-import { server } from "./mocks/server";
+import "@testing-library/jest-dom"
+import "@testing-library/jest-dom/extend-expect"
+import { server } from "./mocks/server"
 
 beforeAll(() => {
   // Enable the mocking in tests.
-  server.listen();
-});
+  server.listen()
+})
 
 afterEach(() => {
   // Reset any runtime handlers tests may use.
-  server.resetHandlers();
-});
+  server.resetHandlers()
+})
 
 afterAll(() => {
   // Clean up once the tests are done.
-  server.close();
-});
+  server.close()
+})
 
 // The last line is commented out because it causes a Typescript error.
 // src/setupTests.ts:24:1 - error TS2322: Type 'undefined' is not assignable to type '{ new (): XMLHttpRequest; prototype: XMLHttpRequest; readonly DONE: number; readonly HEADERS_RECEIVED: number; readonly LOADING: number; readonly OPENED: number; readonly UNSENT: number; }'.

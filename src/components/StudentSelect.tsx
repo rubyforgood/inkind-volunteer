@@ -1,5 +1,5 @@
-import { Student } from "models/Student";
-import React from "react";
+import { Student } from "models/Student"
+import React from "react"
 interface StudentSelectProps {
   students: Student[];
 }
@@ -22,8 +22,8 @@ export const StudentSelect = ({
               </div>
             </div>
           </React.Fragment>
-        );
+        )
       })}
     </div>
-  );
-};
+  )
+}

@@ -1,26 +1,26 @@
-import React from "react";
-import { QueryClient, QueryClientProvider } from "react-query";
+import React from "react"
+import { QueryClient, QueryClientProvider } from "react-query"
 import {
   ApolloClient,
   ApolloProvider,
   createHttpLink,
   InMemoryCache,
   NormalizedCacheObject,
-} from "@apollo/client";
-import "./App.css";
-import { Landing } from "Landing";
+} from "@apollo/client"
+import "./App.css"
+import { Landing } from "Landing"
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient()
 
 const link = createHttpLink({
   uri: "http://localhost:3001/graphql",
   credentials: "include",
-});
+})
 
 const apolloClient: ApolloClient<NormalizedCacheObject> = new ApolloClient({
   cache: new InMemoryCache(),
   link,
-});
+})
 
 const App = (): JSX.Element => {
   return (
@@ -29,7 +29,7 @@ const App = (): JSX.Element => {
         <Landing />
       </QueryClientProvider>
     </ApolloProvider>
-  );
-};
+  )
+}
 
-export default App;
+export default App

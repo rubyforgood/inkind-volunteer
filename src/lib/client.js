@@ -13,7 +13,7 @@ async function client(
       ...customHeaders,
     },
     ...customConfig,
-  };
+  }
 
   return window.fetch(`${endpoint}`, config).then(async (response) => {
     // if (response.status === 401) {
@@ -23,13 +23,13 @@ async function client(
     //   window.location.assign(window.location);
     //   return Promise.reject({ message: "Please re-authenticate." });
     // }
-    const data = await response.json();
+    const data = await response.json()
     if (response.ok) {
-      return data;
+      return data
     } else {
-      return Promise.reject(data);
+      return Promise.reject(data)
     }
-  });
+  })
 }
 
-export { client };
+export { client }
