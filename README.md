@@ -39,16 +39,16 @@ If you are unfamiliar with GraphQL, there is no better time to learn. [HowToGrap
 
 ### Install/Setup InKind Backend
 
-1. Proceed to the [installation instructions on `inkind-admin`](https://github.com/rubyforgood/inkind-admin#installation).
-1. After those installation instructions are complete, run a rails server with `bin/rails s` in a shell session and leave it running.
+1. Proceed to the [installation instructions on `inkind-admin`](https://github.com/rubyforgood/inkind-admin#installation) and work your way down to the server instructions.
+1. After you've completed backend installations, start a rails server with `bin/rails s` and leave it running.
 
 ### Start project
 
-1. Run `yarn start` in a new shell session. This will open [http://localhost:3000](http://localhost:3000) to view the project in your browser. The page will reload if you make edits. You will also see any lint errors in the console.
+1. Run `yarn start` in a new shell session. This will open [http://localhost:3000](http://localhost:3000) to view the project in your browser. The page will reload as you make edits to TypeScript. You will also see type & lint offenses in the console.
 
 ### Tests
 
-1. Run `yarn test` This will launch the test runner in the interactive watch mode.
+1. Run `yarn test` This will launch the test runner in an interactive watch mode.
 
 # Working with GraphQL
 
