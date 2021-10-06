@@ -1,9 +1,9 @@
-import { SurveyResponse } from "models/SurveyResponse";
-import React from "react";
-import { useQuery } from "@apollo/client";
-import { GetSurveyResponsesQuery } from "graphql/queries/GetSurveyResponses";
-import { QueryError } from "QueryError";
-import { GetSurveyResponses } from "graphql/queries/__generated__/GetSurveyResponses";
+import { SurveyResponse } from "models/SurveyResponse"
+import React from "react"
+import { useQuery } from "@apollo/client"
+import { GetSurveyResponsesQuery } from "graphql/queries/GetSurveyResponses"
+import { QueryError } from "QueryError"
+import { GetSurveyResponses } from "graphql/queries/__generated__/GetSurveyResponses"
 
 export const SessionSelect = (): JSX.Element => {
   const { data, loading, error } = useQuery<GetSurveyResponses>(GetSurveyResponsesQuery)
@@ -23,8 +23,8 @@ export const SessionSelect = (): JSX.Element => {
       }
 
       {data?.surveyResponses?.map((response: SurveyResponse) => {
-        const name = `${response.student.name}`;
-        const date = `${response?.meetingDuration?.startedAt}`;
+        const name = `${response.student.name}`
+        const date = `${response?.meetingDuration?.startedAt}`
 
         return (
           <>
@@ -38,8 +38,8 @@ export const SessionSelect = (): JSX.Element => {
               </div>
             </div>
           </>
-        );
+        )
       })}
     </div>
-  );
-};
+  )
+}

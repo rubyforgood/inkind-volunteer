@@ -1,15 +1,15 @@
-import { useMutation } from "@apollo/client";
-import { SignInMutation } from "graphql/mutations/SignInMutation";
-import { User } from "models/User";
-import React, { useState } from "react";
+import { useMutation } from "@apollo/client"
+import { SignInMutation } from "graphql/mutations/SignInMutation"
+import { User } from "models/User"
+import React, { useState } from "react"
 
 interface LoginProps {
   setUser: (arg: User) => void;
 }
 
 export const Login = ({ setUser }: LoginProps): JSX.Element => {
-  const [userEmail, setUserEmail] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
+  const [userEmail, setUserEmail] = useState<string>("")
+  const [password, setPassword] = useState<string>("")
 
   const [login, { client, error }] = useMutation(SignInMutation, {
     variables: {
@@ -19,13 +19,13 @@ export const Login = ({ setUser }: LoginProps): JSX.Element => {
       },
     },
     onCompleted: ({ signInUser }) => {
-      setUser(signInUser.user);
-      client.clearStore();
+      setUser(signInUser.user)
+      client.clearStore()
     },
     onError: (error) => {
-      console.error("[failed login]", error);
+      console.error("[failed login]", error)
     },
-  });
+  })
 
   if (error) {
     return (
@@ -33,7 +33,7 @@ export const Login = ({ setUser }: LoginProps): JSX.Element => {
         Error!
         <pre>{JSON.stringify(error.clientErrors, null, "  ")}</pre>
       </p>
-    );
+    )
   }
 
   return (
@@ -82,5 +82,5 @@ export const Login = ({ setUser }: LoginProps): JSX.Element => {
         </form>
       </div>
     </section>
-  );
-};
+  )
+}
