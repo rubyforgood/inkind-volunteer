@@ -5,7 +5,7 @@ import { GetSurveyResponsesQuery } from "graphql/queries/GetSurveyResponses"
 import { QueryError } from "./QueryError"
 import { GetSurveyResponses } from "graphql/queries/__generated__/GetSurveyResponses"
 
-export const SessionSelect = (): JSX.Element => {
+export const SessionSection = (): JSX.Element => {
   const { data, loading, error } = useQuery<GetSurveyResponses>(GetSurveyResponsesQuery)
   if (loading) { return <div>Loading ....</div> }
   if (error) { return <QueryError error={error} /> }

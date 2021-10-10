@@ -7,8 +7,8 @@ import { GetStudents } from "graphql/queries/__generated__/GetStudents"
 import { User } from "models/User"
 
 import { QueryError } from "./QueryError"
-import { StudentSelect } from "./StudentSelect"
-import { SessionSelect } from "./SessionSelect"
+import { StudentSection } from "./StudentSection"
+import { SessionSection } from "./SessionSection"
 
 interface WelcomeDashboardProps {
   user: User;
@@ -28,8 +28,8 @@ export const WelcomeDashboard = ({
         <h1 className="text-lg font-semibold py-2">Hi, {user.name}!</h1>
         <p className="text-lg font-semibold py-2 text-left">My Students</p>
 
-        <StudentSelect students={data?.students || []} />
-        <SessionSelect />
+        <StudentSection students={data?.students || []} />
+        <SessionSection />
       </div>
     </section>
   )

@@ -1,12 +1,12 @@
 import { Student } from "models/Student"
 import React from "react"
-interface StudentSelectProps {
+interface StudentSectionProps {
   students: Student[];
 }
 
-export const StudentSelect = ({
+export const StudentSection = ({
   students,
-}: StudentSelectProps): JSX.Element => {
+}: StudentSectionProps): JSX.Element => {
   return (
     <div>
       {students.map((student: Student) => {
