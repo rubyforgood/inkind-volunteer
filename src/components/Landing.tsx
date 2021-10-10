@@ -1,7 +1,7 @@
 import { Login } from "components/Login"
 import { WelcomeDashboard } from "components/WelcomeDashboard"
 import { GetCurrentUser } from "graphql/queries/GetCurrentUser"
-import { QueryError } from "QueryError"
+import { QueryError } from "./QueryError"
 import { useState } from "react"
 import { useQuery } from "@apollo/client"
 import { User } from "models/User"
@@ -19,7 +19,7 @@ export const Landing = (): JSX.Element => {
   if (error) return <QueryError error={error} />
 
   return (
-    <div className="App">
+    <div className="text-center">
       {user ? (
         <WelcomeDashboard user={user} />
       ) : (
