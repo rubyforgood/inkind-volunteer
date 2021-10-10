@@ -1,7 +1,7 @@
 import { Login } from "components/Login"
 import { WelcomeDashboard } from "components/WelcomeDashboard"
 import { GetCurrentUser } from "graphql/queries/GetCurrentUser"
-import { QueryError } from "QueryError"
+import { QueryError } from "./QueryError"
 import { useState } from "react"
 import { useQuery } from "@apollo/client"
 import { User } from "models/User"

@@ -1,12 +1,12 @@
 import React from "react"
 import { useQuery } from "@apollo/client"
-import { QueryError } from "QueryError"
 
 import { GetStudentsQuery } from "graphql/queries/GetStudents"
 import { GetStudents } from "graphql/queries/__generated__/GetStudents"
 
 import { User } from "models/User"
 
+import { QueryError } from "./QueryError"
 import { StudentSelect } from "./StudentSelect"
 import { SessionSelect } from "./SessionSelect"
 
