@@ -19,7 +19,7 @@ export const Landing = (): JSX.Element => {
   if (error) return <QueryError error={error} />
 
   return (
-    <div className="App">
+    <div className="text-center">
       {user ? (
         <WelcomeDashboard user={user} />
       ) : (

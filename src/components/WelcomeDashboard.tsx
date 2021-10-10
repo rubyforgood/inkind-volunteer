@@ -23,7 +23,7 @@ export const WelcomeDashboard = ({
   if (error) { return <QueryError error={error} /> }
 
   return (
-    <section className="App h-screen w-full flex justify-center items-center flex-col px-8 py-8 pt-8">
+    <section className="text-center h-screen w-full flex justify-center items-center flex-col px-8 py-8 pt-8">
       <div className="w-full max-w-md">
         <h1 className="text-lg font-semibold py-2">Hi, {user.name}!</h1>
         <p className="text-lg font-semibold py-2 text-left">My Students</p>

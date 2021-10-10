@@ -7,7 +7,6 @@ import {
   InMemoryCache,
   NormalizedCacheObject,
 } from "@apollo/client"
-import "./App.css"
 import { Landing } from "components/Landing"
 
 const queryClient = new QueryClient()
