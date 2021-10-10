@@ -50,6 +50,13 @@ If you are unfamiliar with GraphQL, there is no better time to learn. [HowToGrap
 
 1. Run `yarn test` This will launch the test runner in an interactive watch mode.
 
+### Login
+
+To log in as a volunteer:
+
+Email: volunteer@cep.dev
+Password: password
+
 # Working with GraphQL
 
 When you make a change that grabs additional fields from a GraphQL query, OR makes a new request to a mutation, you need to regenerate the GraphQL schema in this repository.
