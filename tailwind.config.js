@@ -3,6 +3,9 @@ module.exports = {
   darkMode: false,
   theme: {
     extend: {},
+    fontFamily: {
+      'nunito': ['nunito', 'sans-serif']
+    },
   },
   variants: {
     extend: {},

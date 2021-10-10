@@ -12,7 +12,7 @@ export const SessionSection = (): JSX.Element => {
 
   return (
     <div>
-      <p className="text-lg font-semibold py-2 text-left">Recent Sessions</p>
+      <p className="text-lg font-nunito py-2 text-left">Recent Sessions</p>
 
       {data?.surveyResponses?.length === 0 &&
         <div className="flex content-around mt-4">
@@ -32,8 +32,8 @@ export const SessionSection = (): JSX.Element => {
               <div className="w-full flex flex-row inline-block text-left my-2 shadow border rounded py-2 px-3 text-gray-700 leading-tight border-blue-300 bg-blue-50">
                 <img src="" className="text-center rounded-full bg-red-200 w-10 h-10 inline-block mr-3 inline-block" />
                 <div className="inline-block flex flex-col">
-                  <p className="block">{name}</p>
-                  <p className="block text-xs">{date}</p>
+                  <p className="block font-nunito">{name}</p>
+                  <p className="block text-xs font-nunito">{date}</p>
                 </div>
               </div>
             </div>
