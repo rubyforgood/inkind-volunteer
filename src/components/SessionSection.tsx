@@ -24,7 +24,8 @@ export const SessionSection = (): JSX.Element => {
 
       {data?.surveyResponses?.map((response: SurveyResponse) => {
         const name = `${response.student.name}`
-        const date = `${response?.meetingDuration?.startedAt}`
+        const date = new Date(response!.meetingDuration!.startedAt)
+        const formattedDate = `${date.toLocaleString('default', { month: 'long' })} ${date.getDate()}, ${date.getFullYear()}`
 
         return (
           <React.Fragment key={response.id}>
@@ -33,7 +34,7 @@ export const SessionSection = (): JSX.Element => {
                 <img src="" className="text-center rounded-full bg-red-200 w-10 h-10 inline-block mr-3 inline-block" />
                 <div className="inline-block flex flex-col">
                   <p className="block">{name}</p>
-                  <p className="block text-xs">{date}</p>
+                  <p className="block text-xs">{formattedDate}</p>
                 </div>
               </div>
             </div>
