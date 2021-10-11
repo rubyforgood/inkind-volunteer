@@ -1,5 +1,5 @@
 import { Login } from "components/Login"
-import { WelcomeDashboard } from "components/WelcomeDashboard"
+import { MainNav } from "components/MainNav"
 import { GetCurrentUser } from "graphql/queries/GetCurrentUser"
 import { QueryError } from "./QueryError"
 import { useState } from "react"
@@ -21,7 +21,7 @@ export const Landing = (): JSX.Element => {
   return (
     <div className="text-center">
       {user ? (
-        <WelcomeDashboard user={user} />
+        <MainNav user={user} />
       ) : (
         <Login setUser={setUser} />
       )}
