@@ -1,4 +1,5 @@
 import { SurveyResponse } from "models/SurveyResponse"
+import { Avatar } from "./Avatar"
 import React from "react"
 import { useQuery } from "@apollo/client"
 import { GetSurveyResponsesQuery } from "graphql/queries/GetSurveyResponses"
@@ -31,7 +32,7 @@ export const SessionSection = (): JSX.Element => {
           <React.Fragment key={response.id}>
             <div className="px-2">
               <div className="w-full flex flex-row inline-block text-left my-2 shadow border rounded py-2 px-3 text-gray-700 leading-tight border-blue-300 bg-blue-50">
-                <img src="" className="text-center rounded-full bg-red-200 w-10 h-10 inline-block mr-3 inline-block" />
+                <Avatar name={name} />
                 <div className="inline-block flex flex-col">
                   <p className="block">{name}</p>
                   <p className="block text-xs">{formattedDate}</p>
