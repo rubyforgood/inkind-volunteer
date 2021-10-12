@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom"
 
 import { GetStudentQuery } from "graphql/queries/GetStudent"
 import { GetStudent } from "graphql/queries/__generated__/GetStudent"
+import { getAge } from "utils/getAge"
 
 interface StudentShowProps {
   id: string
@@ -15,7 +16,14 @@ export const StudentShow = (): JSX.Element | null => {
 
   if (loading || !data) return null
 
-  const { name, guardianName, guardianPhoneNumber, emergencyContactName, emergencyContactPhoneNumber } = data.student
+  const {
+    name,
+    guardianName,
+    guardianPhoneNumber,
+    emergencyContactName,
+    emergencyContactPhoneNumber,
+    dateOfBirth
+  } = data.student
 
   return (
     <div>
@@ -34,7 +42,7 @@ export const StudentShow = (): JSX.Element | null => {
       <p>{emergencyContactPhoneNumber}</p>
 
       <p>Student's Age</p>
-      <p>{}</p>
+      <p>{getAge(dateOfBirth)}</p>
 
     </div>
   )
