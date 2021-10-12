@@ -24,7 +24,7 @@ export const WelcomeDashboard = ({
 
   return (
     <section className="text-center h-screen w-full flex justify-center items-center flex-col px-8 py-8 pt-8">
-      <div className="w-full max-w-md">
+      <div className="w-full">
         <h1 className="text-lg font-semibold py-2">{user.name}</h1>
         <p className="text-lg py-2 text-left">My Students</p>
 
