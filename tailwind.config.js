@@ -2,12 +2,18 @@ module.exports = {
   purge: ["./src/**/*.{js,jsx,ts,tsx}", "./public/index.html"],
   darkMode: false,
   theme: {
-    colors: {
-      purple: {
-        light: "#d1c4e9",
+    boxShadow: {
+       md: "0 20px 20px -1px rgba(120, 144, 156, .5), 0 2px 20px -1px rgba(120, 144, 156, .5)",
+    },
+    extend: {
+      colors: {
+        'purple-light': '#EDE7F6',
+        'gray-lightest': '#F8FBFE',
+        'gray-light':  '#CFD8DC',
+        'gray-medium': '#B0BEC5',
+        'gray-dark': '#37474F',
       },
     },
-    extend: {},
     fontFamily: {
       'nunito': ['nunito', 'sans-serif']
     },
