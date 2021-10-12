@@ -12,6 +12,9 @@ module.exports = {
         'gray-light':  '#CFD8DC',
         'gray-medium': '#B0BEC5',
         'gray-dark': '#37474F',
+        'login-gradient-top': '#512da8',
+        'login-gradient-middle': '#9575cd',
+        'login-gradient-bottom': '#1ed4eb',
         primary: {
           DEFAULT: '#673ab7',
           '50': '#ede7f6',
@@ -54,7 +57,8 @@ module.exports = {
       },
     },
     fontFamily: {
-      'nunito': ['nunito', 'sans-serif']
+      'nunito': ['nunito', 'sans-serif'],
+      'tenor': ['Tenor Sans', 'sans-serif'],
     },
   },
   variants: {
