@@ -7,7 +7,7 @@ interface StudentSectionProps {
 export const StudentSection = ({
   students,
 }: StudentSectionProps): JSX.Element => {
-  const getAge = (date: Date) => (new Date().getFullYear() - new Date(date).getFullYear())
+  const getAge = (date: Date) => Math.abs(new Date().getFullYear() - new Date(date).getFullYear())
 
   return (
     <div>
