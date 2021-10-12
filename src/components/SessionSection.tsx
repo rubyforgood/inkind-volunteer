@@ -12,8 +12,8 @@ export const SessionSection = (): JSX.Element => {
   if (error) { return <QueryError error={error} /> }
 
   return (
-    <div className="mb-20">
-      <p className="text-lg py-2 text-left">Recent Sessions</p>
+    <div>
+      <p className="text-lg py-2 text-left" style={{fontSize: "20px"}}>Recent Sessions</p>
 
       {data?.surveyResponses?.length === 0 &&
         <div className="flex content-around mt-4">
