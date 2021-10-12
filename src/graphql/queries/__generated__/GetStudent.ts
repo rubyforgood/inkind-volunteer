@@ -15,6 +15,10 @@ export interface GetStudent_student {
   name: string;
   createdAt: any;
   updatedAt: any;
+  guardianName: string | null;
+  guardianPhoneNumber: string | null;
+  emergencyContactName: string | null;
+  emergencyContactPhoneNumber: string | null;
 }
 
 export interface GetStudent {

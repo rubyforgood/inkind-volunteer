@@ -9,6 +9,10 @@ export const GetStudentQuery = gql`
       name
       createdAt
       updatedAt
+      guardianName
+      guardianPhoneNumber
+      emergencyContactName
+      emergencyContactPhoneNumber
     }
   }
 `
