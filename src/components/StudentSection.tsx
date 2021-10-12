@@ -1,6 +1,8 @@
 import { Student } from "models/Student"
 import { Avatar } from "./Avatar"
 import React from "react"
+import { Link } from "react-router-dom"
+
 interface StudentSectionProps {
   students: Student[];
 }
@@ -25,7 +27,7 @@ export const StudentSection = ({
     <div>
       {students.map((student: Student) => {
         return (
-          <React.Fragment key={student.id}>
+          <Link to={`/student/${student.id}`} key={student.id}>
             <div className="px-2">
               <div className="flex flex-row w-full inline-block text-left my-2 shadow border rounded py-2 px-3 text-gray-700 leading-tight border-green-300 bg-green-50">
                 <Avatar name={student.name} />
@@ -35,7 +37,7 @@ export const StudentSection = ({
                 </div>
               </div>
             </div>
-          </React.Fragment>
+          </Link>
         )
       })}
     </div>
