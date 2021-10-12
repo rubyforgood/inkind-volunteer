@@ -27,7 +27,7 @@ export const StudentSection = ({
         return (
           <React.Fragment key={student.id}>
             <div>
-              <div className="flex flex-row w-full inline-block text-left my-1 p-4 leading-tight bg-white">
+              <div className="flex flex-row w-full inline-block text-left my-1 p-4 leading-tight bg-white rounded-md">
                 <Avatar name={student.name} />
                 <div className="inline-block flex flex-col ">
                   <p className="block font-semibold">{student.name}</p>
