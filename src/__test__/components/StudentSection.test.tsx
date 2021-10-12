@@ -12,7 +12,7 @@ test("renders student section", async () => {
   renderWithQueryProvider(<StudentSection students={students} />)
   await waitFor(() => {
     const studentName = screen.getByText(/John Smith/)
-    const studentDateOfBirth = screen.getByText(/Age 13/)
+    const studentDateOfBirth = screen.getByText(/Age 12/)
 
     expect(studentName).toBeInTheDocument()
     expect(studentDateOfBirth).toBeInTheDocument()
