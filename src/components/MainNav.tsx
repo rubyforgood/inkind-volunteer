@@ -24,7 +24,7 @@ export const MainNav = ({ user }: MainNavProps): JSX.Element => {
           <ul className="flex flex-row justify-around pt-4 pb-3 px-5 bg-white">
             <li>
               <Link to="/">
-                <div className="flex flex-col items-center text-gray-medium">
+                <div className="flex flex-col items-center text-gray-dark">
                   <FontAwesomeIcon
                       style={{ fontSize: "1.65em" }}
                       icon={faHome}
@@ -34,7 +34,7 @@ export const MainNav = ({ user }: MainNavProps): JSX.Element => {
               </Link>
             </li>
             <li>
-              <div className="flex flex-col items-center text-gray-medium">
+              <div className="flex flex-col items-center text-gray-dark">
                 <FontAwesomeIcon
                     style={{ fontSize: "1.65em" }}
                     icon={faUser}

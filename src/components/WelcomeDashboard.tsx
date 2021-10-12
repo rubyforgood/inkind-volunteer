@@ -23,13 +23,15 @@ export const WelcomeDashboard = ({
   if (error) { return <QueryError error={error} /> }
 
   return (
-    <section className="text-center h-screen w-full flex justify-center items-center flex-col px-8 py-8 pt-8">
-      <div className="w-full">
-        <h1 className="text-lg font-semibold py-2">{user.name}</h1>
-        <p className="text-lg py-2 text-left">My Students</p>
+    <section className="h-screen">
+      <div className="text-center w-full flex justify-center items-center flex-col px-8 py-8 pt-8 text-gray-dark">
+        <div className="w-full">
+          <h1 className="text-lg py-2">Hi {user.name?.split(" ")[0]}!</h1>
+          <p className="text-lg py-2 text-left">My Students</p>
 
-        <StudentSection students={data?.students || []} />
-        <SessionSection />
+          <StudentSection students={data?.students || []} />
+          <SessionSection />
+        </div>
       </div>
     </section>
   )
