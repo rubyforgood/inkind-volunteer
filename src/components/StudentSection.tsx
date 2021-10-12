@@ -7,6 +7,19 @@ interface StudentSectionProps {
 export const StudentSection = ({
   students,
 }: StudentSectionProps): JSX.Element => {
+  const getAge = (date: Date) => {
+    const today = new Date()
+    const birthDate = new Date(date)
+    const age = today.getFullYear() - birthDate.getFullYear()
+    const month = today.getMonth() - birthDate.getMonth()
+
+    if (month < 0 || (month === 0 && today.getDate() < birthDate.getDate())) {
+      return age - 1
+    }
+
+    return age
+  }
+
   return (
     <div>
       {students.map((student: Student) => {
@@ -17,7 +30,7 @@ export const StudentSection = ({
                 <img src="" className="text-center rounded-full bg-red-200 w-10 h-10 inline-block mr-3 inline-block" />
                 <div className="inline-block flex flex-col ">
                   <p className="block">{student.name}</p>
-                  <p className="block text-xs">{student.dateOfBirth}</p>
+                  <p className="block text-xs">{`Age ${getAge(student.dateOfBirth)}`}</p>
                 </div>
               </div>
             </div>
