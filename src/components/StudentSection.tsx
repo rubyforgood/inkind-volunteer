@@ -1,7 +1,9 @@
-import { Student } from "models/Student"
-import { Avatar } from "./Avatar"
 import React from "react"
 import { Link } from "react-router-dom"
+
+import { Student } from "models/Student"
+import { Avatar } from "./Avatar"
+import { getAge } from "utils/getAge"
 
 interface StudentSectionProps {
   students: Student[];
@@ -10,19 +12,6 @@ interface StudentSectionProps {
 export const StudentSection = ({
   students,
 }: StudentSectionProps): JSX.Element => {
-  const getAge = (date: Date) => {
-    const today = new Date()
-    const birthDate = new Date(date)
-    const age = today.getFullYear() - birthDate.getFullYear()
-    const month = today.getMonth() - birthDate.getMonth()
-
-    if (month < 0 || (month === 0 && today.getDate() < birthDate.getDate())) {
-      return age - 1
-    }
-
-    return age
-  }
-
   return (
     <div>
       {students.map((student: Student) => {
