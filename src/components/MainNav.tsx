@@ -19,27 +19,27 @@ interface MainNavProps {
 export const MainNav = ({ user }: MainNavProps): JSX.Element => {
   return (
     <Router>
-      <div>
-        <nav className="fixed inset-x-0 bottom-0 mx-auto border-t-2 border-gray-light">
-          <ul className="flex flex-row justify-around p-5 bg-white">
+      <div className="bg-gray-lightest">
+        <nav className="fixed inset-x-0 bottom-0 mx-auto border-t-1 border-gray-light shadow-md">
+          <ul className="flex flex-row justify-around pt-4 pb-3 px-5 bg-white">
             <li>
               <Link to="/">
                 <div className="flex flex-col items-center text-gray-medium">
                   <FontAwesomeIcon
-                      fixedWidth
+                      style={{ fontSize: "1.65em" }}
                       icon={faHome}
                   />
-                  Home
+                  <small className="pt-1">Home</small>
                 </div>
               </Link>
             </li>
             <li>
               <div className="flex flex-col items-center text-gray-medium">
                 <FontAwesomeIcon
-                    fixedWidth
+                    style={{ fontSize: "1.65em" }}
                     icon={faUser}
                 />
-                Account
+                <small className="pt-1">Account</small>
               </div>
             </li>
           </ul>
