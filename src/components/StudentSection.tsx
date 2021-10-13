@@ -1,6 +1,10 @@
+import React from "react"
+import { Link } from "react-router-dom"
+
 import { Student } from "models/Student"
 import { Avatar } from "./Avatar"
-import React from "react"
+import { getAge } from "utils/getAge"
+
 interface StudentSectionProps {
   students: Student[];
 }
@@ -8,26 +12,13 @@ interface StudentSectionProps {
 export const StudentSection = ({
   students,
 }: StudentSectionProps): JSX.Element => {
-  const getAge = (date: Date) => {
-    const today = new Date()
-    const birthDate = new Date(date)
-    const age = today.getFullYear() - birthDate.getFullYear()
-    const month = today.getMonth() - birthDate.getMonth()
-
-    if (month < 0 || (month === 0 && today.getDate() < birthDate.getDate())) {
-      return age - 1
-    }
-
-    return age
-  }
-
   return (
     <div className="mb-5">
       {students.map((student: Student) => {
         return (
-          <React.Fragment key={student.id}>
-            <div>
-              <div className="flex flex-row w-full inline-block text-left my-1 p-4 leading-tight bg-white">
+          <Link to={`/student/${student.id}`} key={student.id}>
+            <div className="px-2">
+              <div className="flex flex-row w-full inline-block text-left my-2 shadow border rounded py-2 px-3 text-gray-700 leading-tight border-green-300 bg-green-50">
                 <Avatar name={student.name} />
                 <div className="inline-block flex flex-col ">
                   <p className="block font-semibold">{student.name}</p>
@@ -35,7 +26,7 @@ export const StudentSection = ({
                 </div>
               </div>
             </div>
-          </React.Fragment>
+          </Link>
         )
       })}
     </div>

@@ -7,6 +7,7 @@ module.exports = {
     },
     extend: {
       colors: {
+        'purple': '#673AB7',
         'purple-light': '#EDE7F6',
         'gray-lightest': '#F8FBFE',
         'gray-light':  '#CFD8DC',
@@ -53,7 +54,7 @@ module.exports = {
           '700': '#455a64',
           '800': '#37474f',
           '900': '#263238',
-        },        
+        },
       },
     },
     fontFamily: {
