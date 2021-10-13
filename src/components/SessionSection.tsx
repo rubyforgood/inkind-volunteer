@@ -15,7 +15,7 @@ export const SessionSection = (): JSX.Element => {
   return (
     <div className="pb-20 bg-gray-lightest">
       <p className="text-lg py-2 text-left" style={{fontSize: "20px"}}>Recent Sessions</p>
-      {data?.surveyResponses?.length === 3 &&
+      {data?.surveyResponses?.length === 0 &&
         <div className="flex flex-col text-left mt-4 bg-gray-lightest">
           <p style={{fontSize: "16px"}}>
             You haven't completed a session survey yet! <br />
