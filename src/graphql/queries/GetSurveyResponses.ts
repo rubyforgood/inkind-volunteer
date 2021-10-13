@@ -6,6 +6,7 @@ export const GetSurveyResponsesQuery = gql`
       id
       student {
         name
+        initials
       }
       volunteer {
         id

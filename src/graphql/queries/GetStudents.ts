@@ -7,6 +7,7 @@ export const GetStudentsQuery = gql`
       dateOfBirth
       email
       name
+      initials
       createdAt
       updatedAt
     }
