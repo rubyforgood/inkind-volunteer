@@ -13,6 +13,7 @@ export interface GetStudents_students {
   dateOfBirth: any | null;
   email: string | null;
   name: string;
+  initials: string;
   createdAt: any;
   updatedAt: any;
 }

@@ -12,7 +12,7 @@ import { AuthProviderCredentialsInput } from "./../../../../__generated__/global
 export interface SignIn_signInUser_user {
   __typename: "User";
   id: string;
-  name: string | null;
+  name: string;
   email: string | null;
 }
 

@@ -13,6 +13,7 @@ import { User } from "models/User"
 
 import { WelcomeDashboard } from "./WelcomeDashboard"
 import { StudentShow } from "./StudentShow"
+import { Account } from "./Account"
 
 interface MainNavProps {
   user: User;
@@ -33,10 +34,12 @@ export const MainNav = ({ user }: MainNavProps): JSX.Element => {
               </Link>
             </li>
             <li>
-              <div className="flex flex-col items-center text-gray-dark">
-                <img src={String(Person,)} width="25px" height="25px" />
-                <small className="pt-1">Account</small>
-              </div>
+              <Link to="/account">
+                <div className="flex flex-col items-center text-gray-dark">
+                  <img src={String(Person,)} width="25px" height="25px" />
+                  <small className="pt-1">Account</small>
+                </div>
+              </Link>
             </li>
           </ul>
         </nav>
@@ -44,8 +47,13 @@ export const MainNav = ({ user }: MainNavProps): JSX.Element => {
           <Route path="/student/:id">
             <StudentShow />
           </Route>
-          <Route path="/">
+          <Route path="/" exact>
             <WelcomeDashboard
+                user={user}
+            />
+          </Route>
+          <Route path="/account" exact>
+            <Account
                 user={user}
             />
           </Route>
