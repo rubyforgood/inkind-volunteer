@@ -7,10 +7,10 @@ import {
   Switch,
 } from "react-router-dom"
 
-import HomeIcon from "./home.svg"
-import HomeSelectedIcon from "./homeSelected.svg"
-import PersonIcon from "./person.svg"
-import PersonSelectedIcon from "./personSelected.svg"
+import HomeIcon from "./icons/home.svg"
+import HomeSelectedIcon from "./icons/homeSelected.svg"
+import PersonIcon from "./icons/person.svg"
+import PersonSelectedIcon from "./icons/personSelected.svg"
 
 import { User } from "models/User"
 
