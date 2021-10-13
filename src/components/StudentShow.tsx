@@ -59,7 +59,7 @@ export const StudentShow = (): JSX.Element | null => {
         <div className="flex flex-col items-start p-1" />
       </div>
 
-      <button className="bg-purple text-neutral px-5 py-3 rounded-md">BEGIN SESSION SURVEY</button>
+      <button className="bg-purple text-neutral-50 px-5 py-3 rounded-md">BEGIN SESSION SURVEY</button>
 
       <p className="text-lg py-2 text-left">Session History</p>
     </section>
