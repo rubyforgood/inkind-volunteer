@@ -18,7 +18,7 @@ export const StudentSection = ({
         return (
           <Link to={`/student/${student.id}`} key={student.id}>
             <div className="px-2">
-              <div className="flex flex-row w-full inline-block text-left my-2 shadow border rounded py-2 px-3 text-gray-700 leading-tight border-green-300 bg-green-50">
+              <div className="flex flex-row w-full inline-block text-left my-2 shadow border rounded py-2 px-3 text-gray-700 leading-tight border-green-300 bg-green-50 rounded-md">
                 <Avatar name={student.name} />
                 <div className="inline-block flex flex-col ">
                   <p className="block font-semibold">{student.name}</p>

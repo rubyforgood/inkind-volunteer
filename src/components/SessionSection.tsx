@@ -12,8 +12,8 @@ export const SessionSection = (): JSX.Element => {
   if (error) { return <QueryError error={error} /> }
 
   return (
-    <div className="mb-20">
-      <p className="text-lg py-2 text-left">Recent Sessions</p>
+    <div>
+      <p className="text-lg py-2 text-left" style={{fontSize: "20px"}}>Recent Sessions</p>
 
       {data?.surveyResponses?.length === 0 &&
         <div className="flex content-around mt-4">
@@ -31,7 +31,7 @@ export const SessionSection = (): JSX.Element => {
         return (
           <React.Fragment key={response.id}>
             <div>
-              <div className="flex flex-row w-full inline-block text-left my-1 p-4 leading-tight bg-white">
+              <div className="flex flex-row w-full inline-block text-left my-1 p-4 leading-tight bg-white rounded-md">
                 <Avatar name={name} />
                 <div className="inline-block flex flex-col">
                   <p className="block font-semibold">{name}</p>

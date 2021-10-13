@@ -5,8 +5,9 @@ import {
   Route,
   Link
 } from "react-router-dom"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faHome, faUser } from "@fortawesome/free-solid-svg-icons"
+
+import HomeIcon from "./home.svg"
+import Person from "./person.svg"
 
 import { User } from "models/User"
 
@@ -26,20 +27,14 @@ export const MainNav = ({ user }: MainNavProps): JSX.Element => {
             <li>
               <Link to="/">
                 <div className="flex flex-col items-center text-gray-dark">
-                  <FontAwesomeIcon
-                      style={{ fontSize: "1.65em" }}
-                      icon={faHome}
-                  />
+                  <img src={String(HomeIcon,)} width="26px" height="24px" />
                   <small className="pt-1">Home</small>
                 </div>
               </Link>
             </li>
             <li>
               <div className="flex flex-col items-center text-gray-dark">
-                <FontAwesomeIcon
-                    style={{ fontSize: "1.65em" }}
-                    icon={faUser}
-                />
+                <img src={String(Person,)} width="25px" height="25px" />
                 <small className="pt-1">Account</small>
               </div>
             </li>
