@@ -1,13 +1,16 @@
 import React from "react"
 import {
   BrowserRouter as Router,
-  Switch,
+  Link,
   Route,
-  Link
+  RouteProps,
+  Switch,
 } from "react-router-dom"
 
 import HomeIcon from "./home.svg"
-import Person from "./person.svg"
+import HomeSelectedIcon from "./homeSelected.svg"
+import PersonIcon from "./person.svg"
+import PersonSelectedIcon from "./personSelected.svg"
 
 import { User } from "models/User"
 
@@ -20,6 +23,7 @@ interface MainNavProps {
 }
 
 export const MainNav = ({ user }: MainNavProps): JSX.Element => {
+
   return (
     <Router>
       <div className="bg-gray-lightest">
@@ -28,15 +32,27 @@ export const MainNav = ({ user }: MainNavProps): JSX.Element => {
             <li>
               <Link to="/">
                 <div className="flex flex-col items-center text-gray-dark">
-                  <img src={String(HomeIcon,)} width="26px" height="24px" />
+                  <Route>
+                      {({ location }: RouteProps) => location?.pathname == "/" ? (
+                        <img src={String(HomeSelectedIcon,)} width="25px" height="25px" />
+                      ) : (
+                        <img src={String(HomeIcon,)} width="25px" height="25px" />
+                      )}
+                    </Route>
                   <small className="pt-1">Home</small>
                 </div>
               </Link>
             </li>
             <li>
-              <Link to="/account">
+            <Link to="/account">
                 <div className="flex flex-col items-center text-gray-dark">
-                  <img src={String(Person,)} width="25px" height="25px" />
+                  <Route>
+                    {({ location }: RouteProps) => location?.pathname == "/account" ? (
+                      <img src={String(PersonSelectedIcon,)} width="25px" height="25px" />
+                    ) : (
+                      <img src={String(PersonIcon,)} width="25px" height="25px" />
+                    )}
+                  </Route>
                   <small className="pt-1">Account</small>
                 </div>
               </Link>
