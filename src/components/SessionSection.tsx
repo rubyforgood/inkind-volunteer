@@ -5,6 +5,7 @@ import { useQuery } from "@apollo/client"
 import { GetSurveyResponsesQuery } from "graphql/queries/GetSurveyResponses"
 import { QueryError } from "./QueryError"
 import { GetSurveyResponses } from "graphql/queries/__generated__/GetSurveyResponses"
+import NoSessionSVG from "./noSessions.svg"
 
 export const SessionSection = (): JSX.Element => {
   const { data, loading, error } = useQuery<GetSurveyResponses>(GetSurveyResponsesQuery)
@@ -12,14 +13,17 @@ export const SessionSection = (): JSX.Element => {
   if (error) { return <QueryError error={error} /> }
 
   return (
-    <div>
+    <div className="pb-20 bg-gray-lightest">
       <p className="text-lg py-2 text-left" style={{fontSize: "20px"}}>Recent Sessions</p>
-
-      {data?.surveyResponses?.length === 0 &&
-        <div className="flex content-around mt-4">
-          <p className="text-lg font-semibold py-2 text-center rounded-full bg-red-200 w-64 h-64 pt-24  mx-auto">
-            No Sessions
+      {data?.surveyResponses?.length === 3 &&
+        <div className="flex flex-col text-left mt-4 bg-gray-lightest">
+          <p style={{fontSize: "16px"}}>
+            You haven't completed a session survey yet! <br />
+            Log a session now!
           </p>
+          <div className="bg-gray-lightest">
+            <img src={String(NoSessionSVG,)} width="311px" className={"mt-4 items-center"} />
+          </div>
         </div>
       }
 
