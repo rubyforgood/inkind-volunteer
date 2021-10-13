@@ -12,6 +12,7 @@ import Person from './person.svg'
 import { User } from "models/User"
 
 import { WelcomeDashboard } from "./WelcomeDashboard"
+import { StudentShow } from "./StudentShow"
 
 interface MainNavProps {
   user: User;
@@ -40,6 +41,9 @@ export const MainNav = ({ user }: MainNavProps): JSX.Element => {
           </ul>
         </nav>
         <Switch>
+          <Route path="/student/:id">
+            <StudentShow />
+          </Route>
           <Route path="/">
             <WelcomeDashboard
                 user={user}

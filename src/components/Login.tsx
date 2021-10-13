@@ -37,34 +37,32 @@ export const Login = ({ setUser }: LoginProps): JSX.Element => {
   }
 
   return (
-    <section className="text-center h-screen w-full flex justify-center items-center bg-green-500">
-      <div className="w-full max-w-md bg-gray-800">
-        <form className=" bg-white shadow-md rounded px-8 py-8 pt-8">
-          <div className="px-4 pb-4">
-            <label htmlFor="email" className="text-sm block font-bold pb-2">
-              EMAIL ADDRESS
-            </label>
+    <section className="text-center h-screen w-full flex justify-center items-center bg-gradient-to-b from-login-gradient-top via-login-gradient-middle to-login-gradient-bottom">
+      <div className="w-full max-w-md">
+        <h2 className="mt-6 text-center text-5xl mb-6 font-extrabold font-tenor uppercase text-white">
+          InKind
+        </h2>
+
+        <form className="px-2 py-8 pt-8">
+          <div className="px-2 pb-4">
             <input
               type="email"
               name="email"
               id="email"
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-blue-300 "
-              placeholder="Johnbull@example.com"
+              className="appearance-none rounded w-full p-4 text-gray-600 placeholder-gray-500 leading-tight focus:outline-none focus:shadow-outline bg-primary-100"
+              placeholder="Email address"
               onBlur={(event: React.FormEvent) =>
                 setUserEmail((event.currentTarget as HTMLInputElement).value)
               }
             />
           </div>
-          <div className="px-4 pb-4">
-            <label htmlFor="password" className="text-sm font-nunito block font-bold pb-2">
-              PASSWORD
-            </label>
+          <div className="px-2 pb-4">
             <input
               type="password"
               name="password"
               id="password"
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-blue-300"
-              placeholder="Enter your password"
+              className="appearance-none rounded w-full p-4 text-gray-600 placeholder-gray-500 leading-tight focus:outline-none focus:shadow-outline bg-primary-100"
+              placeholder="Password"
               onBlur={(event: React.FormEvent) =>
                 setPassword((event.currentTarget as HTMLInputElement).value)
               }
@@ -72,7 +70,7 @@ export const Login = ({ setUser }: LoginProps): JSX.Element => {
           </div>
           <div>
             <button
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+              className="py-3 px-10 mt-8 shadow rounded focus:outline-none focus:shadow-outline uppercase bg-neutral-50"
               type="button"
               onClick={() => login()}
             >
