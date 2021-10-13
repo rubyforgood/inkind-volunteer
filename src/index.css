@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.btn {
+  @apply px-10 py-5 uppercase bg-purple-800	rounded inline-block text-gray-200;
+}
+.btn.disabled {
+  @apply opacity-50 cursor-not-allowed pointer-events-none;
+}
