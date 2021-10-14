@@ -22,7 +22,7 @@ export const SessionSection = (): JSX.Element => {
             Log a session now!
           </p>
           <div className="bg-gray-lightest">
-            <img src={String(NoSessionSVG,)} width="311px" className={"mt-4 items-center"} />
+            <img src={String(NoSessionSVG,)} width="552px" className={"m-4"} style={{margin: "auto"}}/>
           </div>
         </div>
       }

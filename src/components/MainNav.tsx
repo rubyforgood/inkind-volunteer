@@ -26,7 +26,7 @@ export const MainNav = ({ user }: MainNavProps): JSX.Element => {
 
   return (
     <Router>
-      <div className="bg-gray-lightest">
+      <div className="bg-gray-lightest h-screen">
         <nav className="fixed inset-x-0 bottom-0 mx-auto border-t-1 border-gray-light shadow-md">
           <ul className="flex flex-row justify-around pt-4 pb-3 px-5 bg-white">
             <li>
