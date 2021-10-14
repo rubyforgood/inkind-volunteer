@@ -11,7 +11,9 @@ import { Landing } from "components/Landing"
 
 const urlSearchParams = new URLSearchParams(window.location.search)
 const params = Object.fromEntries(urlSearchParams.entries())
-setToken(params.token)
+if (params.token) {
+  setToken(params.token)
+}
 
 const queryClient = new QueryClient()
 
