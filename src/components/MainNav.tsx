@@ -15,8 +15,8 @@ import PersonSelectedIcon from "./icons/personSelected.svg"
 import { User } from "models/User"
 
 import { WelcomeDashboard } from "./WelcomeDashboard"
-import { StudentShow } from "./StudentShow"
-import { SurveyShow } from "./SurveyShow"
+import { StudentShow } from "./StudentShow/index"
+import { SurveyShow } from "./SurveyShow/index"
 import { Account } from "./Account"
 
 interface MainNavProps {
