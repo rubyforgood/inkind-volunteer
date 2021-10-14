@@ -1,12 +1,11 @@
 // @ts-nocheck
 
-import React from "react"
 import { screen, waitFor } from "@testing-library/react"
 import { StudentSection } from "components/StudentSection"
 import { Student } from "models/Student"
 import { renderWithQueryProvider } from "utils/test"
-import {Router} from 'react-router-dom'
-import {createMemoryHistory} from 'history'
+import { Router } from 'react-router-dom'
+import { createMemoryHistory } from 'history'
 
 test("renders student section", async () => {
   const students: Student[] = [{ name: "John Smith", dateOfBirth: "2008-10-20" }]

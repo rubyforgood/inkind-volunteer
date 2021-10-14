@@ -22,7 +22,7 @@ export interface GetSurveyResponses_surveyResponses_volunteer {
 export interface GetSurveyResponses_surveyResponses_meetingDuration {
   __typename: "MeetingDuration";
   minutes: number;
-  startedAt: string;
+  startedAt: any;
 }
 
 export interface GetSurveyResponses_surveyResponses {
