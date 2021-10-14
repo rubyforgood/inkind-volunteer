@@ -1,5 +1,5 @@
 import { GetSurvey_survey_questions } from "graphql/queries/__generated__/GetSurvey"
-import Vector from "../icons/vector.svg"
+import Vector from "./icons/vector.svg"
 
 interface SurveyProgressBarProps {
   questions: GetSurvey_survey_questions[],
