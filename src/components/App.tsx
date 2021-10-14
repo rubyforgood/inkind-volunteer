@@ -6,6 +6,7 @@ import {
   InMemoryCache,
   NormalizedCacheObject,
 } from "@apollo/client"
+import { authenticatedHttpLink } from "lib/authentication"
 import { Landing } from "components/Landing"
 
 const queryClient = new QueryClient()
@@ -17,7 +18,7 @@ const link = createHttpLink({
 
 const apolloClient: ApolloClient<NormalizedCacheObject> = new ApolloClient({
   cache: new InMemoryCache(),
-  link,
+  link: authenticatedHttpLink.concat(link),
 })
 
 const App = (): JSX.Element => {
