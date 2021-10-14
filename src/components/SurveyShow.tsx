@@ -25,8 +25,16 @@ export const SurveyShow = (): JSX.Element | null => {
 
   const currentQuestion = questions[currentQuestionIndex]
 
+  const onSkip = () => {
+    setCurrentQuestionIndex(currentQuestionIndex + 1)
+  }
+
+  const onNext = () => {
+    setCurrentQuestionIndex(currentQuestionIndex + 1)
+  }
 
   console.log(data.survey)
+
   return (
     <section className="w-full px-4 py-8 pt-8 text-gray-dark h-screen">
       <p>{currentQuestion.prompt}</p>
@@ -34,6 +42,11 @@ export const SurveyShow = (): JSX.Element | null => {
         currentQuestion.options &&
         (<SingleSelectionOption options={currentQuestion.options} />)
       }
+
+      <div className="fixed bottom-20 inset-x-0 w-full grid grid-cols-2 gap-4 px-4 py-8">
+        <button className="bg-neutral-50 text-neutral-900 px-5 py-3 rounded" onClick={onSkip}>SKIP</button>
+        <button className="bg-primary-500 text-neutral-50 px-5 py-3 rounded" onClick={onNext}>NEXT</button>
+      </div>
     </section>
   )
 }

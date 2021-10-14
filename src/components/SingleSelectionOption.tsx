@@ -17,11 +17,6 @@ export const SingleSelectionOption = ({ options }: SingleSelectionOptionProps): 
           </p>
         )}
       )}
-
-      <div className="fixed bottom-20 inset-x-0 w-full grid grid-cols-2 gap-4 px-4 py-8">
-        <button className="bg-neutral-50 text-neutral-900 px-5 py-3 rounded">SKIP</button>
-        <button className="bg-primary-500 text-neutral-50 px-5 py-3 rounded">NEXT</button>
-      </div>
     </section>
   )
 }
