@@ -11,7 +11,7 @@ export const Account = ({
 }: AccountProps): JSX.Element => {
   return (
     <>
-      <div className="flex mt-5 mb-10 px-8 text-gray-600">
+      <div className="flex pt-5 mb-10 px-8 text-gray-600">
         <div className="flex flex-1 self-end">
           <a href="#">Logout</a>
         </div>
