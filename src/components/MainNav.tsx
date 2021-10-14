@@ -15,7 +15,7 @@ import { User } from "models/User"
 
 import { WelcomeDashboard } from "./WelcomeDashboard/index"
 import { StudentShow } from "./StudentShow"
-import { SurveyShow } from "./SurveyShow"
+import { SurveyShow } from "./SurveyShow/index"
 import { Account } from "./Account"
 
 interface MainNavProps {
