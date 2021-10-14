@@ -28,12 +28,20 @@ export const SurveyShow = (): JSX.Element | null => {
 
   const currentQuestion = questions[currentQuestionIndex]
 
-  const onSkip = () => {
-    setCurrentQuestionIndex(currentQuestionIndex + 1)
+  const goToNextQuestion = () => {
+    if(currentQuestionIndex + 1 == questions.length) {
+      history.push(`/student/${studentId}`)
+    } else {
+      setCurrentQuestionIndex(currentQuestionIndex + 1)
+    }
   }
 
-  const onNext = () => {
-    setCurrentQuestionIndex(currentQuestionIndex + 1)
+  const goToPreviousQuestion = () => {
+    if(currentQuestionIndex == 0) {
+      history.push(`/student/${studentId}`)
+    } else {
+      setCurrentQuestionIndex(currentQuestionIndex - 1)
+    }
   }
 
   const renderQuestion = (question: GetSurvey_survey_questions) => {
@@ -46,14 +54,6 @@ export const SurveyShow = (): JSX.Element | null => {
       }
     } else {
       return <TextQuestion />
-    }
-  }
-
-  const goToPreviousQuestion = () => {
-    if(currentQuestionIndex == 0) {
-      history.push(`/student/${studentId}`)
-    } else {
-      setCurrentQuestionIndex(currentQuestionIndex - 1)
     }
   }
 
@@ -70,8 +70,8 @@ export const SurveyShow = (): JSX.Element | null => {
       {renderQuestion(currentQuestion)}
 
       <div className="fixed bottom-20 inset-x-0 w-full grid grid-cols-2 gap-4 px-4 py-8">
-        <button className="bg-neutral-50 text-neutral-900 px-5 py-3 rounded" onClick={onSkip}>SKIP</button>
-        <button className="bg-primary-500 text-neutral-50 px-5 py-3 rounded" onClick={onNext}>NEXT</button>
+        <button className="bg-neutral-50 text-neutral-900 px-5 py-3 rounded" onClick={goToNextQuestion}>SKIP</button>
+        <button className="bg-primary-500 text-neutral-50 px-5 py-3 rounded" onClick={goToNextQuestion}>NEXT</button>
       </div>
     </section>
   )
