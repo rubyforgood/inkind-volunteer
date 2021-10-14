@@ -17,13 +17,14 @@ import { WelcomeDashboard } from "./WelcomeDashboard/index"
 import { StudentShow } from "./StudentShow"
 import { SurveyShow } from "./SurveyShow/index"
 import { Account } from "./Account"
+import { EditAccount } from "./EditAccount"
+import { EditAccountSuccess } from "./EditAccountSuccess"
 
 interface MainNavProps {
   user: User;
 }
 
 export const MainNav = ({ user }: MainNavProps): JSX.Element => {
-
   return (
     <Router>
       <div className="bg-gray-lightest h-screen">
@@ -47,7 +48,7 @@ export const MainNav = ({ user }: MainNavProps): JSX.Element => {
             <Link to="/account">
                 <div className="flex flex-col items-center text-gray-dark">
                   <Route>
-                    {({ location }: RouteProps) => location?.pathname == "/account" ? (
+                    {({ location }: RouteProps) => location?.pathname.startsWith("/account") ? (
                       <img src={String(PersonSelectedIcon,)} width="25px" height="25px" />
                     ) : (
                       <img src={String(PersonIcon,)} width="25px" height="25px" />
@@ -75,6 +76,14 @@ export const MainNav = ({ user }: MainNavProps): JSX.Element => {
             <Account
                 user={user}
             />
+          </Route>
+          <Route path="/account/edit" exact>
+            <EditAccount
+                user={user}
+            />
+          </Route>
+          <Route path="/account/edit/success" exact>
+            <EditAccountSuccess />
           </Route>
         </Switch>
       </div>

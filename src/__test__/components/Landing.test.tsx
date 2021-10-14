@@ -9,14 +9,106 @@ import { SignInMutation } from "graphql/mutations/SignInMutation"
 import { GetStudentsQuery } from "graphql/queries/GetStudents"
 import { GetSurveyResponsesQuery } from "graphql/queries/GetSurveyResponses"
 
-const mocks = [
+const mocksAuthenticated = [
   {
     request: {
       query: GetCurrentUser,
     },
     result: {
       data: {
-        currentUser: null,
+        currentUser: {
+          id: 1,
+          name: "Violet Volunteer",
+          firstName: "Violet",
+          lastName: "Volunteer",
+          phoneNumber: "111-222-3333",
+          email: "volunteer@cep.dev",
+          initials: "VV",
+          role: "volunteer",
+        },
+      }
+    },
+  }, {
+    request: {
+      query: GetStudentsQuery,
+    },
+    result: {
+      data: {
+        students: [
+          {
+            id: 1,
+            dateOfBirth: "03/22/07",
+            email: "joe@cep.ngo",
+            name: "Joe Student",
+            initials: "JS",
+            createdAt: "2021-10-12 15:00:00",
+            updatedAt: "2021-10-12 15:00:00"
+          },
+          {
+            id: 2,
+            dateOfBirth: "10/19/08",
+            email: "jane@cep.ngo",
+            name: "Jane Student",
+            initials: "JS",
+            createdAt: "2021-10-12 15:00:00",
+            updatedAt: "2021-10-12 15:00:00"
+          },
+        ],
+      }
+    }
+  }, {
+    request: {
+      query: GetSurveyResponsesQuery
+    },
+    result: {
+      data: {
+        surveyResponses: [
+          {
+            id: 1,
+            student: {
+              name: "Joe Session",
+              initials: "JS",
+            },
+            volunteer: {
+              id: 1,
+              name: "Volunteer",
+              initials: "VV",
+            },
+            meetingDuration: {
+              minutes: 29,
+              startedAt: "2021-10-13- 08:31:47",
+            }
+          },
+          {
+            id: 2,
+            student: {
+              name: "Jane Session",
+              initials: "JS",
+            },
+            volunteer: {
+              id: 1,
+              name: "Volunteer",
+              initials: "VV",
+            },
+            meetingDuration: {
+              minutes: 27,
+              startedAt: "2021-10-13- 09:50:23",
+            }
+          },
+        ]
+      }
+    }
+  }
+]
+
+const mocksAnonymous = [
+  {
+    request: {
+      query: GetCurrentUser,
+    },
+    result: {
+      data: {
+        currentUser: null
       }
     },
   }, {
@@ -41,72 +133,12 @@ const mocks = [
         }
       }
     }
-  }, {
-    request: {
-      query: GetStudentsQuery,
-    },
-    result: {
-      data: {
-        students: [
-          {
-            id: 1,
-            dateOfBirth: "03/22/07",
-            email: "joe@cep.ngo",
-            name: "Joe Student",
-            createdAt: "2021-10-12 15:00:00",
-            updatedAt: "2021-10-12 15:00:00"
-          },
-          {
-            id: 2,
-            dateOfBirth: "10/19/08",
-            email: "jane@cep.ngo",
-            name: "Jane Student",
-            createdAt: "2021-10-12 15:00:00",
-            updatedAt: "2021-10-12 15:00:00"
-          },
-        ],
-      }
-    }
-  }, {
-    request: {
-      query: GetSurveyResponsesQuery
-    },
-    result: {
-      data: {
-        surveyResponses: [
-          {
-            id: 1,
-            student: { name: "Joe Session" },
-            volunteer: {
-              id: 1,
-              name: "Volunteer"
-            },
-            meetingDuration: {
-              minutes: 29,
-              startedAt: "2021-10-13- 08:31:47",
-            }
-          },
-          {
-            id: 2,
-            student: { name: "Jane Session" },
-            volunteer: {
-              id: 1,
-              name: "Volunteer"
-            },
-            meetingDuration: {
-              minutes: 27,
-              startedAt: "2021-10-13- 09:50:23",
-            }
-          },
-        ]
-      }
-    }
-  }
+  },
 ]
 
-test("opens the welcome dashboard after the user logs in", async () => {
+test("user logs in", async () => {
   render(
-    <MockedProvider mocks={mocks} addTypename={false}>
+    <MockedProvider mocks={mocksAnonymous} addTypename={false}>
       <QueryClientProvider client={new QueryClient()}>
         <Landing />
       </QueryClientProvider>
@@ -128,6 +160,16 @@ test("opens the welcome dashboard after the user logs in", async () => {
     userEvent.type(screen.getByPlaceholderText(/password/i), "password")
     userEvent.click(signInButton)
   })
+})
+
+test("volunteer is logged in", async () => {
+  render(
+    <MockedProvider mocks={mocksAuthenticated} addTypename={false}>
+      <QueryClientProvider client={new QueryClient()}>
+        <Landing />
+      </QueryClientProvider>
+    </MockedProvider>
+  )
 
   // Welcome Dashboard State
   await waitFor(() => {
