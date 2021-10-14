@@ -4,7 +4,7 @@ import Vector from "./icons/vector.svg"
 interface SurveyProgressBarProps {
   questions: GetSurvey_survey_questions[],
   currentQuestionIndex: number,
-  goToPreviousQuestion: any,
+  goToPreviousQuestion: () => void,
 }
 
 export const SurveyProgressBar = ({ questions, currentQuestionIndex, goToPreviousQuestion }: SurveyProgressBarProps): JSX.Element => {
