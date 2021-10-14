@@ -10,12 +10,13 @@
 export interface GetSurveyResponses_surveyResponses_student {
   __typename: "Student";
   name: string;
+  initials: string;
 }
 
 export interface GetSurveyResponses_surveyResponses_volunteer {
   __typename: "User";
   id: string;
-  name: string | null;
+  name: string;
 }
 
 export interface GetSurveyResponses_surveyResponses_meetingDuration {

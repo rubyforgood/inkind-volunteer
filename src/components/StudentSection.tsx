@@ -17,10 +17,10 @@ export const StudentSection = ({
       {students.map((student: Student) => {
         return (
           <Link to={`/student/${student.id}`} key={student.id}>
-            <div className="px-2">
-              <div className="flex flex-row w-full inline-block text-left my-2 shadow border rounded py-2 px-3 text-gray-700 leading-tight border-green-300 bg-green-50">
-                <Avatar name={student.name} />
-                <div className="inline-block flex flex-col ">
+            <div>
+              <div className="flex flex-row w-full inline-block text-left my-1 p-4 leading-tight bg-white rounded-md">
+                <Avatar initials={student.initials} />
+                <div className="inline-block flex flex-col">
                   <p className="block font-semibold">{student.name}</p>
                   <p className="block text-xs">{`Age ${getAge(student.dateOfBirth)}`}</p>
                 </div>

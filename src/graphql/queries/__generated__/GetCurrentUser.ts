@@ -10,8 +10,12 @@
 export interface GetCurrentUser_currentUser {
   __typename: "User";
   id: string;
-  name: string | null;
+  name: string;
+  firstName: string;
+  lastName: string;
+  phoneNumber: string | null;
   email: string | null;
+  initials: string;
   role: string | null;
 }
 
