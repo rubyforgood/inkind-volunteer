@@ -6,8 +6,12 @@ import {
   InMemoryCache,
   NormalizedCacheObject,
 } from "@apollo/client"
-import { authenticatedHttpLink } from "lib/authentication"
+import { authenticatedHttpLink, setToken } from "lib/authentication"
 import { Landing } from "components/Landing"
+
+const urlSearchParams = new URLSearchParams(window.location.search)
+const params = Object.fromEntries(urlSearchParams.entries())
+setToken(params.token)
 
 const queryClient = new QueryClient()
 
