@@ -1,7 +1,8 @@
+import React, { useState } from "react"
 import { useMutation } from "@apollo/client"
+
 import { SignInMutation } from "graphql/mutations/SignInMutation"
 import { User } from "models/User"
-import React, { useState } from "react"
 
 interface LoginProps {
   setUser: (arg: User) => void;

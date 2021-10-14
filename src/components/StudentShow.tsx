@@ -76,7 +76,6 @@ export const StudentShow = (): JSX.Element | null => {
             response={response}
         />
       ))}
-
     </section>
   )
 }

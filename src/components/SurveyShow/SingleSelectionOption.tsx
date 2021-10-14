@@ -1,5 +1,3 @@
-import React from "react"
-
 import { GetSurvey_survey_questions_options } from "graphql/queries/__generated__/GetSurvey"
 
 interface SingleSelectionOptionProps {
