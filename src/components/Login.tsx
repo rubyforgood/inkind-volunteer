@@ -1,5 +1,6 @@
-import React, { useState } from "react"
+import { useState } from "react"
 import { useMutation } from "@apollo/client"
+import { setToken } from "lib/authentication"
 
 import { SignInMutation } from "graphql/mutations/SignInMutation"
 
@@ -14,7 +15,8 @@ export const Login = (): JSX.Element => {
         password: password,
       },
     },
-    onCompleted: () => {
+    onCompleted: ({ signInUser }) => {
+      setToken(signInUser.token)
       client.clearStore()
       window.location.reload()
     },
