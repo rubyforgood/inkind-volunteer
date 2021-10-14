@@ -17,7 +17,8 @@ interface SurveyShowProps {
 
 export const SurveyShow = (): JSX.Element | null => {
   const history = useHistory()
-  const [currentQuestionIndex, setCurrentQuestionIndex ] = useState<number>(0)
+  const [ answer, setAnswer ] = useState<[number] | string>()
+  const [ currentQuestionIndex, setCurrentQuestionIndex ] = useState<number>(0)
   const { surveyResponseId, studentId } = useParams<SurveyShowProps>()
   const { data, loading } = useQuery<GetSurveyResponse>(GetSurveyResponseQuery, { variables: { id: surveyResponseId }})
 
@@ -46,10 +47,17 @@ export const SurveyShow = (): JSX.Element | null => {
     }
   }
 
+  const onNext = () => {
+    // save answer to DB
+    console.log("currentQuestion: ", currentQuestion)
+    console.log("answer: ", answer)
+    goToNextQuestion()
+  }
+
   const renderQuestion = (question: GetSurveyResponse_surveyResponse_survey_questions) => {
     if (question.options && question.options.length > 0) {
       if (question.type == "SurveySingleSelectQuestion") {
-        return <SingleSelectionOption options={question.options} />
+        return <SingleSelectionOption options={question.options} onAnswer={setAnswer} />
       }
       if (question.type == "SurveyMultiSelectQuestion") {
         return <MultipleSelectionOption options={question.options} />
@@ -73,7 +81,7 @@ export const SurveyShow = (): JSX.Element | null => {
 
       <div className="fixed bottom-20 inset-x-0 w-full grid grid-cols-2 gap-4 px-4 py-8">
         <button className="bg-neutral-50 text-neutral-900 px-5 py-3 rounded" onClick={goToNextQuestion}>SKIP</button>
-        <button className="bg-primary-500 text-neutral-50 px-5 py-3 rounded" onClick={goToNextQuestion}>NEXT</button>
+        <button className="bg-primary-500 text-neutral-50 px-5 py-3 rounded" onClick={onNext}>NEXT</button>
       </div>
     </section>
   )
