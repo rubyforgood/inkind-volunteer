@@ -2,7 +2,7 @@ import React from "react"
 import { Link } from "react-router-dom"
 
 import { Student } from "models/Student"
-import { Avatar } from "./Avatar"
+import { Avatar } from "../partials/Avatar"
 import { getAge } from "utils/getAge"
 
 interface StudentSectionProps {

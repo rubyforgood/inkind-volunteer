@@ -5,9 +5,9 @@ import { SurveyResponse } from "models/SurveyResponse"
 import { GetSurveyResponsesQuery } from "graphql/queries/GetSurveyResponses"
 import { GetSurveyResponses } from "graphql/queries/__generated__/GetSurveyResponses"
 
-import { QueryError } from "./QueryError"
+import { QueryError } from "../partials/QueryError"
 import NoSessionSVG from "./noSessions.svg"
-import { SessionItem } from "./SessionItem"
+import { SessionItem } from "../partials/SessionItem"
 
 export const SessionSection = (): JSX.Element => {
   const { data, loading, error } = useQuery<GetSurveyResponses>(GetSurveyResponsesQuery)

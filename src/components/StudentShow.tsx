@@ -9,7 +9,7 @@ import { GetStudentSurveyResponses } from "graphql/queries/__generated__/GetStud
 import { StudentSurveyResponse } from "models/StudentSurveyResponse"
 import { getAge } from "utils/getAge"
 
-import { SessionItem } from "./SessionItem"
+import { SessionItem } from "./partials/SessionItem"
 
 interface StudentShowProps {
   id: string

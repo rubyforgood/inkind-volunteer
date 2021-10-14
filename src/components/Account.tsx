@@ -1,6 +1,6 @@
 import { User } from "models/User"
 
-import { Avatar } from "./Avatar"
+import { Avatar } from "./partials/Avatar"
 
 interface AccountProps {
   user: User;

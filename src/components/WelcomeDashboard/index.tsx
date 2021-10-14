@@ -6,7 +6,7 @@ import { GetStudents } from "graphql/queries/__generated__/GetStudents"
 
 import { User } from "models/User"
 
-import { QueryError } from "./QueryError"
+import { QueryError } from "../partials/QueryError"
 import { StudentSection } from "./StudentSection"
 import { SessionSection } from "./SessionSection"
 

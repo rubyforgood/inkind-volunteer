@@ -14,8 +14,8 @@ import PersonSelectedIcon from "./icons/personSelected.svg"
 
 import { User } from "models/User"
 
-import { WelcomeDashboard } from "./WelcomeDashboard"
-import { StudentShow } from "./StudentShow/index"
+import { WelcomeDashboard } from "./WelcomeDashboard/index"
+import { StudentShow } from "./StudentShow"
 import { SurveyShow } from "./SurveyShow/index"
 import { Account } from "./Account"
 

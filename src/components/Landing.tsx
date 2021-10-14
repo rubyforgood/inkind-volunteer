@@ -1,10 +1,12 @@
+import { useState } from "react"
+import { useQuery } from "@apollo/client"
+
 import { Login } from "components/Login"
 import { MainNav } from "components/MainNav"
 import { GetCurrentUser } from "graphql/queries/GetCurrentUser"
-import { QueryError } from "./QueryError"
-import { useState } from "react"
-import { useQuery } from "@apollo/client"
 import { User } from "models/User"
+
+import { QueryError } from "./partials/QueryError"
 
 export const Landing = (): JSX.Element => {
   const [user, setUser] = useState<User | null>(null)
