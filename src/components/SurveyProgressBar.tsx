@@ -18,6 +18,7 @@ export const SurveyProgressBar = ({ questions, currentQuestionIndex, goToPreviou
         <span>
           {`${currentQuestionIndex + 1} of ${questions.length}`}
         </span>
+        <span />
       </div>
       <div className="relative pt-1">
         <div className="overflow-hidden h-1 text-xs flex bg-neutral-200">
