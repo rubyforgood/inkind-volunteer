@@ -3,8 +3,13 @@ import { useQuery } from "@apollo/client"
 import { Link, useParams } from "react-router-dom"
 
 import { GetStudentQuery } from "graphql/queries/GetStudent"
+import { GetStudentSurveyResponsesQuery } from "graphql/queries/GetStudentSurveyResponses"
 import { GetStudent } from "graphql/queries/__generated__/GetStudent"
+import { GetStudentSurveyResponses } from "graphql/queries/__generated__/GetStudentSurveyResponses"
+import { StudentSurveyResponse } from "models/StudentSurveyResponse"
 import { getAge } from "utils/getAge"
+
+import { SessionItem } from "./partials/SessionItem"
 
 interface StudentShowProps {
   id: string
@@ -13,8 +18,9 @@ interface StudentShowProps {
 export const StudentShow = (): JSX.Element | null => {
   const { id } = useParams<StudentShowProps>()
   const { data, loading } = useQuery<GetStudent>(GetStudentQuery, { variables: { id }})
+  const { data: surveyData, loading: surveyLoading } = useQuery<GetStudentSurveyResponses>(GetStudentSurveyResponsesQuery, { variables: { id }})
 
-  if (loading || !data) return null
+  if ((loading || surveyLoading) || (!data || !surveyData)) return null
 
   const {
     name,
@@ -64,6 +70,12 @@ export const StudentShow = (): JSX.Element | null => {
       </Link>
 
       <p className="text-lg py-2 text-left">Session History</p>
+      {surveyData?.studentSurveyResponses?.map((response: StudentSurveyResponse) => (
+        <SessionItem
+            key={response.id}
+            response={response}
+        />
+      ))}
     </section>
   )
 }

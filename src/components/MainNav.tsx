@@ -1,4 +1,3 @@
-import React from "react"
 import {
   BrowserRouter as Router,
   Link,
@@ -14,9 +13,9 @@ import PersonSelectedIcon from "./icons/personSelected.svg"
 
 import { User } from "models/User"
 
-import { WelcomeDashboard } from "./WelcomeDashboard"
+import { WelcomeDashboard } from "./WelcomeDashboard/index"
 import { StudentShow } from "./StudentShow"
-import { SurveyShow } from "./SurveyShow"
+import { SurveyShow } from "./SurveyShow/index"
 import { Account } from "./Account"
 
 interface MainNavProps {

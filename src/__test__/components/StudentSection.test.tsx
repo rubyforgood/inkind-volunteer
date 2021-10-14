@@ -1,7 +1,7 @@
 // @ts-nocheck
 
 import { screen, waitFor } from "@testing-library/react"
-import { StudentSection } from "components/StudentSection"
+import { StudentSection } from "components/WelcomeDashboard/StudentSection"
 import { Student } from "models/Student"
 import { renderWithQueryProvider } from "utils/test"
 import { Router } from 'react-router-dom'

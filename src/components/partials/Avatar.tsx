@@ -1,5 +1,3 @@
-import React from "react"
-
 export declare type AvatarPros = {
   initials: string;
   size?: number;
