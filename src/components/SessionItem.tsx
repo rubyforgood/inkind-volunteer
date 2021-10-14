@@ -1,10 +1,11 @@
 import React from "react"
 
+import { SurveyResponse } from "models/SurveyResponse"
 import { StudentSurveyResponse } from "models/StudentSurveyResponse"
 import { Avatar } from "./Avatar"
 
 interface SessionItemProps {
-  response: StudentSurveyResponse,
+  response: SurveyResponse | StudentSurveyResponse,
 }
 
 
