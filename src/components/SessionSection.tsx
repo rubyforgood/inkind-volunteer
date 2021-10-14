@@ -29,7 +29,7 @@ export const SessionSection = (): JSX.Element => {
 
       {data?.surveyResponses?.map((response: SurveyResponse) => {
         const name = `${response.student.name}`
-        const date = new Date(response!.meetingDuration!.startedAt)
+        const date = new Date(response?.meetingDuration?.startedAt ?? "2021")
         const formattedDate = `${date.toLocaleString('default', { month: 'long' })} ${date.getDate()}, ${date.getFullYear()}`
 
         return (
