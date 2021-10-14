@@ -8,7 +8,6 @@ interface SessionItemProps {
   response: SurveyResponse | StudentSurveyResponse,
 }
 
-
 export const SessionItem = ({ response }: SessionItemProps): JSX.Element => {
   const name = `${response.student.name}`
   const date = new Date(response?.meetingDuration?.startedAt || "2021")
