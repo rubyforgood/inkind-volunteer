@@ -60,7 +60,7 @@ export const MainNav = ({ user }: MainNavProps): JSX.Element => {
           </ul>
         </nav>
         <Switch>
-          <Route path="/student/:studentId/survey/:surveyId">
+          <Route path="/student/:studentId/survey/:surveyResponseId">
             <SurveyShow />
           </Route>
           <Route path="/student/:id">

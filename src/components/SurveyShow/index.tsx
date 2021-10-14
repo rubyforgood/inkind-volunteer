@@ -2,8 +2,8 @@ import { useState } from "react"
 import { useQuery } from "@apollo/client"
 import { useParams, useHistory } from "react-router-dom"
 
-import { GetSurveyQuery } from "graphql/queries/GetSurvey"
-import { GetSurvey, GetSurvey_survey_questions } from "graphql/queries/__generated__/GetSurvey"
+import { GetSurveyResponseQuery } from "graphql/queries/GetSurveyResponse"
+import { GetSurveyResponse, GetSurveyResponse_surveyResponse_survey_questions } from "graphql/queries/__generated__/GetSurveyResponse"
 
 import { SurveyProgressBar } from "./SurveyProgressBar"
 import { SingleSelectionOption } from "./SingleSelectionOption"
@@ -11,19 +11,20 @@ import { MultipleSelectionOption } from "./MultipleSelectionOption"
 import { TextQuestion } from "./TextQuestion"
 
 interface SurveyShowProps {
-  surveyId: string,
+  surveyResponseId: string,
   studentId: string,
 }
 
 export const SurveyShow = (): JSX.Element | null => {
   const history = useHistory()
   const [currentQuestionIndex, setCurrentQuestionIndex ] = useState<number>(0)
-  const { surveyId, studentId } = useParams<SurveyShowProps>()
-  const { data, loading } = useQuery<GetSurvey>(GetSurveyQuery, { variables: { id: surveyId }})
+  const { surveyResponseId, studentId } = useParams<SurveyShowProps>()
+  const { data, loading } = useQuery<GetSurveyResponse>(GetSurveyResponseQuery, { variables: { id: surveyResponseId }})
 
   if (loading || !data) return null
 
-  const { questions } = data.survey
+  const { surveyResponse } = data
+  const { questions } = surveyResponse.survey
 
   if (!questions) return null
 
@@ -45,7 +46,7 @@ export const SurveyShow = (): JSX.Element | null => {
     }
   }
 
-  const renderQuestion = (question: GetSurvey_survey_questions) => {
+  const renderQuestion = (question: GetSurveyResponse_surveyResponse_survey_questions) => {
     if (question.options && question.options.length > 0) {
       if (question.type == "SurveySingleSelectQuestion") {
         return <SingleSelectionOption options={question.options} />
