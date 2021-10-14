@@ -2,13 +2,8 @@ import React, { useState } from "react"
 import { useMutation } from "@apollo/client"
 
 import { SignInMutation } from "graphql/mutations/SignInMutation"
-import { User } from "models/User"
 
-interface LoginProps {
-  setUser: (arg: User) => void;
-}
-
-export const Login = ({ setUser }: LoginProps): JSX.Element => {
+export const Login = (): JSX.Element => {
   const [userEmail, setUserEmail] = useState<string>("")
   const [password, setPassword] = useState<string>("")
 
@@ -19,9 +14,9 @@ export const Login = ({ setUser }: LoginProps): JSX.Element => {
         password: password,
       },
     },
-    onCompleted: ({ signInUser }) => {
-      setUser(signInUser.user)
+    onCompleted: () => {
       client.clearStore()
+      window.location.reload()
     },
     onError: (error) => {
       console.error("[failed login]", error)

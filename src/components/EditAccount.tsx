@@ -2,6 +2,8 @@ import { useForm } from "react-hook-form"
 import { Link } from "react-router-dom"
 import { useHistory } from "react-router-dom"
 
+import { useMutation } from "@apollo/client"
+import { updateUserMutation } from "graphql/mutations/UpdateUserMutation"
 import { User } from "models/User"
 import { Avatar } from "./Avatar"
 
@@ -20,10 +22,14 @@ export const EditAccount = ({
   user,
 }: AccountProps): JSX.Element => {
   const { register, handleSubmit, formState: { errors } } = useForm<VolunteerInput>()
+  const [updateUser, { loading }] = useMutation(updateUserMutation)
   const history = useHistory()
   const onSubmit = (data: VolunteerInput) => {
-    console.log(data)
-    history.push("/account/edit/success")
+    updateUser({ variables: { data }}).then(() => {
+      history.push("/account/edit/success")
+    }).catch((err) => {
+      console.log(err)
+    })
   }
 
   return (
@@ -36,7 +42,7 @@ export const EditAccount = ({
           <h2 className="text-xl">Profile</h2>
         </div>
         <div className="flex flex-1 justify-end self-end">
-          <input type="submit" value="Done" className="bg-transparent" />
+          <input type="submit" value={loading ? "Saving..." : "Done"} className="bg-transparent" />
         </div>
       </div>
 
