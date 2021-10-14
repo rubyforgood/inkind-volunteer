@@ -8,6 +8,7 @@ interface SurveyProgressBarProps {
 }
 
 export const SurveyProgressBar = ({ questions, currentQuestionIndex, goToPreviousQuestion }: SurveyProgressBarProps): JSX.Element => {
+  const progress = ((currentQuestionIndex + 1)/ questions.length) * 100
   return (
     <div className="text-neutral-600">
       <div className="flex justify-between">
@@ -20,7 +21,7 @@ export const SurveyProgressBar = ({ questions, currentQuestionIndex, goToPreviou
       </div>
       <div className="relative pt-1">
         <div className="overflow-hidden h-1 text-xs flex bg-neutral-200">
-            <div style={{width: "30%"}}
+            <div style={{width: `${progress}%`}}
                 className="shadow-none flex flex-col whitespace-nowrap justify-center bg-primary-500">
             </div>
         </div>
