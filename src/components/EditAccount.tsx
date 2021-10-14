@@ -1,11 +1,10 @@
 import { useForm } from "react-hook-form"
-import { Link } from "react-router-dom"
-import { useHistory } from "react-router-dom"
+import { Link, useHistory } from "react-router-dom"
 
 import { useMutation } from "@apollo/client"
 import { updateUserMutation } from "graphql/mutations/UpdateUserMutation"
 import { User } from "models/User"
-import { Avatar } from "./Avatar"
+import { Avatar } from "./partials/Avatar"
 
 interface AccountProps {
   user: User;
