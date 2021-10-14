@@ -1,10 +1,11 @@
-import React, { useState } from "react"
+import { useState } from "react"
 import { useQuery } from "@apollo/client"
 import { useParams } from "react-router-dom"
 
 import { GetSurveyQuery } from "graphql/queries/GetSurvey"
 import { GetSurvey, GetSurvey_survey_questions } from "graphql/queries/__generated__/GetSurvey"
 
+import { SurveyProgressBar } from "./SurveyProgressBar"
 import { SingleSelectionOption } from "./SingleSelectionOption"
 import { MultipleSelectionOption } from "./MultipleSelectionOption"
 import { TextQuestion } from "./TextQuestion"
@@ -21,7 +22,6 @@ export const SurveyShow = (): JSX.Element | null => {
   if (loading || !data) return null
 
   const { questions } = data.survey
-  console.log(questions)
 
   if (!questions) return null
 
@@ -48,8 +48,16 @@ export const SurveyShow = (): JSX.Element | null => {
     }
   }
 
+  const goToPreviousQuestion = () => setCurrentQuestionIndex(currentQuestionIndex - 1)
+
   return (
     <section className="w-full px-4 py-8 pt-8 text-gray-dark h-screen">
+      <SurveyProgressBar
+          goToPreviousQuestion={goToPreviousQuestion}
+          currentQuestionIndex={currentQuestionIndex}
+          questions={questions}
+      />
+
       <p>{currentQuestion.prompt}</p>
 
       {renderQuestion(currentQuestion)}
