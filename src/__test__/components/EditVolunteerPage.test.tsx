@@ -6,7 +6,7 @@ import { QueryClient, QueryClientProvider } from "react-query"
 import { EditAccount } from "components/EditAccount"
 import { User } from "models/User"
 import { updateUserMutation } from "graphql/mutations/UpdateUserMutation"
-import { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom'
 
 test("renders the edit volunteer information page", async () => {
   const user: User = { firstName: "John", lastName: "Smith", phoneNumber: "111-222-3333", email: "john@smith.com" }
