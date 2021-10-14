@@ -1,4 +1,5 @@
 import { GetSurvey_survey_questions } from "graphql/queries/__generated__/GetSurvey"
+import Vector from "./icons/vector.svg"
 
 interface SurveyProgressBarProps {
   questions: GetSurvey_survey_questions[],
@@ -9,10 +10,14 @@ interface SurveyProgressBarProps {
 export const SurveyProgressBar = ({ questions, currentQuestionIndex, goToPreviousQuestion }: SurveyProgressBarProps): JSX.Element => {
   return (
     <div className="text-neutral-600">
-      <a  onClick={goToPreviousQuestion}>
-        back
-      </a>
-      {`${currentQuestionIndex + 1} of ${questions.length}`}
+      <div className="flex justify-between">
+        <a onClick={goToPreviousQuestion}>
+          <img src={String(Vector,)} width="10px" height="10px" />
+        </a>
+        <span>
+          {`${currentQuestionIndex + 1} of ${questions.length}`}
+        </span>
+      </div>
       <div className="relative pt-1">
         <div className="overflow-hidden h-1 text-xs flex bg-neutral-200">
             <div style={{width: "30%"}}
