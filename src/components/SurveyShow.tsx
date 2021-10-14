@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { useQuery } from "@apollo/client"
-import { useParams } from "react-router-dom"
+import { useParams, useHistory } from "react-router-dom"
 
 import { GetSurveyQuery } from "graphql/queries/GetSurvey"
 import { GetSurvey, GetSurvey_survey_questions } from "graphql/queries/__generated__/GetSurvey"
@@ -10,13 +10,14 @@ import { SingleSelectionOption } from "./SingleSelectionOption"
 import { MultipleSelectionOption } from "./MultipleSelectionOption"
 import { TextQuestion } from "./TextQuestion"
 interface SurveyShowProps {
-  surveyId: string
+  surveyId: string,
+  studentId: string,
 }
 
-
 export const SurveyShow = (): JSX.Element | null => {
+  const history = useHistory()
   const [currentQuestionIndex, setCurrentQuestionIndex ] = useState<number>(0)
-  const { surveyId } = useParams<SurveyShowProps>()
+  const { surveyId, studentId } = useParams<SurveyShowProps>()
   const { data, loading } = useQuery<GetSurvey>(GetSurveyQuery, { variables: { id: surveyId }})
 
   if (loading || !data) return null
@@ -48,7 +49,13 @@ export const SurveyShow = (): JSX.Element | null => {
     }
   }
 
-  const goToPreviousQuestion = () => setCurrentQuestionIndex(currentQuestionIndex - 1)
+  const goToPreviousQuestion = () => {
+    if(currentQuestionIndex == 0) {
+      history.push(`/student/${studentId}`)
+    } else {
+      setCurrentQuestionIndex(currentQuestionIndex - 1)
+    }
+  }
 
   return (
     <section className="w-full px-4 py-8 pt-8 text-gray-dark h-screen">
