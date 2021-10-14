@@ -8,7 +8,7 @@ interface SingleSelectionOptionProps {
 
 export const SingleSelectionOption = ({ options }: SingleSelectionOptionProps): JSX.Element | null => {
   return (
-    <section className="w-full px-4 py-8 pt-8 text-gray-dark h-screen">
+    <section className="w-full text-gray-dark h-screen px-4 py-8">
       {options.map((option: GetSurvey_survey_questions_options) => {
         return (
           <p className="text-left">
@@ -18,7 +18,7 @@ export const SingleSelectionOption = ({ options }: SingleSelectionOptionProps): 
         )}
       )}
 
-      <div className="grid grid-cols-2 gap-4 my-4">
+      <div className="fixed bottom-20 inset-x-0 w-full grid grid-cols-2 gap-4 px-4 py-8">
         <button className="bg-neutral-50 text-neutral-900 px-5 py-3 rounded">SKIP</button>
         <button className="bg-primary-500 text-neutral-50 px-5 py-3 rounded">NEXT</button>
       </div>
