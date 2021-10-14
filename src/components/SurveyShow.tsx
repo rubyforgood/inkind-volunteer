@@ -7,6 +7,7 @@ import { GetSurvey, GetSurvey_survey_questions } from "graphql/queries/__generat
 
 import { SingleSelectionOption } from "./SingleSelectionOption"
 import { MultipleSelectionOption } from "./MultipleSelectionOption"
+import { TextQuestion } from "./TextQuestion"
 interface SurveyShowProps {
   surveyId: string
 }
@@ -35,13 +36,15 @@ export const SurveyShow = (): JSX.Element | null => {
   }
 
   const renderQuestion = (question: GetSurvey_survey_questions) => {
-    if (question.options) {
+    if (question.options && question.options.length > 0) {
       if (question.type == "SurveySingleSelectQuestion") {
         return <SingleSelectionOption options={question.options} />
       }
       if (question.type == "SurveyMultiSelectQuestion") {
         return <MultipleSelectionOption options={question.options} />
       }
+    } else {
+      return <TextQuestion />
     }
   }
 
