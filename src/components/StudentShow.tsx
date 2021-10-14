@@ -1,6 +1,6 @@
 import React from "react"
 import { useQuery } from "@apollo/client"
-import { useParams } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 
 import { GetStudentQuery } from "graphql/queries/GetStudent"
 import { GetStudentSurveyResponsesQuery } from "graphql/queries/GetStudentSurveyResponses"
@@ -65,7 +65,9 @@ export const StudentShow = (): JSX.Element | null => {
         <div className="flex flex-col items-start p-1" />
       </div>
 
-      <button className="bg-purple text-neutral-50 px-5 py-3 rounded-md">BEGIN SESSION SURVEY</button>
+      <Link to={`/student/${id}/survey/1`}>
+        <button className="bg-purple text-neutral-50 px-5 py-3 rounded-md">BEGIN SESSION SURVEY</button>
+      </Link>
 
       <p className="text-lg py-2 text-left">Session History</p>
       {surveyData?.studentSurveyResponses?.map((response: StudentSurveyResponse) => (

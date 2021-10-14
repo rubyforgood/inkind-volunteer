@@ -16,6 +16,7 @@ import { User } from "models/User"
 
 import { WelcomeDashboard } from "./WelcomeDashboard"
 import { StudentShow } from "./StudentShow"
+import { SurveyShow } from "./SurveyShow"
 import { Account } from "./Account"
 
 interface MainNavProps {
@@ -60,6 +61,9 @@ export const MainNav = ({ user }: MainNavProps): JSX.Element => {
           </ul>
         </nav>
         <Switch>
+          <Route path="/student/:studentId/survey/:surveyId">
+            <SurveyShow />
+          </Route>
           <Route path="/student/:id">
             <StudentShow />
           </Route>
