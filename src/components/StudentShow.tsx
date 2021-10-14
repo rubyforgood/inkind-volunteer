@@ -31,12 +31,11 @@ export const StudentShow = (): JSX.Element | null => {
         studentId: id,
       }
     }).then(({ data: { createSurveyResponse }}) => {
-      console.log(`/student/${id}/survey/${createSurveyResponse.response.id}`)
       history.push(`/student/${id}/survey/${createSurveyResponse.response.id}`)
     })
   }
 
-  if ((loading || surveyLoading) || (!data || !surveyData)) return null
+  if (loading || surveyLoading || !data || !surveyData) return null
 
   const {
     name,
