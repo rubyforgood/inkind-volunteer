@@ -12,6 +12,13 @@ export interface AuthProviderCredentialsInput {
   password: string;
 }
 
+export interface UpdateUserInput {
+  firstName: string;
+  lastName: string;
+  email?: string | null;
+  phoneNumber?: string | null;
+}
+
 //==============================================================
 // END Enums and Input Objects
 //==============================================================

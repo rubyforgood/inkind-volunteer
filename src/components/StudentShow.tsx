@@ -1,6 +1,5 @@
-import React from "react"
-import { useQuery } from "@apollo/client"
-import { Link, useParams } from "react-router-dom"
+import { useQuery, useMutation } from "@apollo/client"
+import { useParams, useHistory } from "react-router-dom"
 
 import { GetStudentQuery } from "graphql/queries/GetStudent"
 import { GetStudentSurveyResponsesQuery } from "graphql/queries/GetStudentSurveyResponses"
@@ -10,6 +9,7 @@ import { StudentSurveyResponse } from "models/StudentSurveyResponse"
 import { getAge } from "utils/getAge"
 
 import { SessionItem } from "./partials/SessionItem"
+import { CreateSurveyResponse } from "graphql/mutations/CreateSurveyResponse"
 
 interface StudentShowProps {
   id: string
@@ -17,10 +17,25 @@ interface StudentShowProps {
 
 export const StudentShow = (): JSX.Element | null => {
   const { id } = useParams<StudentShowProps>()
+  const history = useHistory()
   const { data, loading } = useQuery<GetStudent>(GetStudentQuery, { variables: { id }})
   const { data: surveyData, loading: surveyLoading } = useQuery<GetStudentSurveyResponses>(GetStudentSurveyResponsesQuery, { variables: { id }})
+  const [ createSurveyResponse ] = useMutation(CreateSurveyResponse)
 
-  if ((loading || surveyLoading) || (!data || !surveyData)) return null
+  const onBeginSurvey = () => {
+
+    createSurveyResponse({
+      variables: {
+        surveyId: 1,
+        userId: 1,
+        studentId: id,
+      }
+    }).then(({ data: { createSurveyResponse }}) => {
+      history.push(`/student/${id}/survey/${createSurveyResponse.response.id}`)
+    })
+  }
+
+  if (loading || surveyLoading || !data || !surveyData) return null
 
   const {
     name,
@@ -65,9 +80,12 @@ export const StudentShow = (): JSX.Element | null => {
         <div className="flex flex-col items-start p-1" />
       </div>
 
-      <Link to={`/student/${id}/survey/1`}>
-        <button className="bg-purple text-neutral-50 px-5 py-3 rounded-md">BEGIN SESSION SURVEY</button>
-      </Link>
+      <button
+          className="bg-purple text-neutral-50 px-5 py-3 rounded-md"
+          onClick={onBeginSurvey}
+      >
+        BEGIN SESSION SURVEY
+      </button>
 
       <p className="text-lg py-2 text-left">Session History</p>
       {surveyData?.studentSurveyResponses?.map((response: StudentSurveyResponse) => (

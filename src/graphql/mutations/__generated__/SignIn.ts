@@ -23,7 +23,7 @@ export interface SignIn_signInUser {
 }
 
 export interface SignIn {
-  signInUser: SignIn_signInUser | null;
+  signInUser: SignIn_signInUser;
 }
 
 export interface SignInVariables {
