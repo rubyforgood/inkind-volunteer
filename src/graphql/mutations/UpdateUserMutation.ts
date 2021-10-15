@@ -11,3 +11,9 @@ export const updateUserMutation = gql`
     }
   }
 `
+
+export const updateUserPasswordMutation = gql`
+  mutation UpdateUserPassword($oldPassword: String!, $password: String!) {
+    success: updateUserPassword(oldPassword: $oldPassword, password: $password)
+  }
+`

@@ -18,6 +18,7 @@ import { StudentShow } from "./StudentShow"
 import { SurveyShow } from "./SurveyShow/index"
 import { Account } from "./Account"
 import { EditAccount } from "./EditAccount"
+import { EditAccountPassword } from "./EditAccountPassword"
 import { EditAccountSuccess } from "./EditAccountSuccess"
 
 interface MainNavProps {
@@ -81,6 +82,9 @@ export const MainNav = ({ user }: MainNavProps): JSX.Element => {
             <EditAccount
                 user={user}
             />
+          </Route>
+          <Route path="/account/edit-password" exact>
+            <EditAccountPassword user={user} />
           </Route>
           <Route path="/account/edit/success" exact>
             <EditAccountSuccess />
