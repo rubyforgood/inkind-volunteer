@@ -34,7 +34,7 @@ export const EditAccountPassword = ({
   const { register, handleSubmit, formState: { errors }, watch } = useForm()
   const [updateUser, { loading, error }] = useMutation<GraphqlInput>(updateUserPasswordMutation, {
     onCompleted: () => {
-      history.push("/account/edit/success")
+      history.push("/account/edit/success?text=Your password was successfully updated.")
     }
   })
   const history = useHistory()
