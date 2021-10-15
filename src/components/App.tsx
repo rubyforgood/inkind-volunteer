@@ -6,7 +6,14 @@ import {
   InMemoryCache,
   NormalizedCacheObject,
 } from "@apollo/client"
+import { authenticatedHttpLink, setToken } from "lib/authentication"
 import { Landing } from "components/Landing"
+
+const urlSearchParams = new URLSearchParams(window.location.search)
+const params = Object.fromEntries(urlSearchParams.entries())
+if (params.token) {
+  setToken(params.token)
+}
 
 const queryClient = new QueryClient()
 
@@ -17,7 +24,7 @@ const link = createHttpLink({
 
 const apolloClient: ApolloClient<NormalizedCacheObject> = new ApolloClient({
   cache: new InMemoryCache(),
-  link,
+  link: authenticatedHttpLink.concat(link),
 })
 
 const App = (): JSX.Element => {

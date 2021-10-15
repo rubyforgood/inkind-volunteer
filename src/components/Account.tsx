@@ -1,5 +1,7 @@
 import { User } from "models/User"
+import { Link } from "react-router-dom"
 
+import { setToken } from "lib/authentication"
 import { Avatar } from "./partials/Avatar"
 
 interface AccountProps {
@@ -9,17 +11,29 @@ interface AccountProps {
 export const Account = ({
   user,
 }: AccountProps): JSX.Element => {
+
+  const clearSession = () => {
+    setToken("")
+    window.location.reload()
+  }
+
   return (
     <>
-      <div className="flex pt-5 mb-10 px-8 text-gray-600">
+      <div className="flex pt-5 pb-10 px-8 text-gray-600">
         <div className="flex flex-1 self-end">
-          <a href="#">Logout</a>
+          <button
+              type="button"
+              className="btn-link"
+              onClick={clearSession}
+          >
+                Logout
+          </button>
         </div>
         <div className="flex flex-1 justify-center self-end">
           <h2 className="text-xl">Profile</h2>
         </div>
         <div className="flex flex-1 justify-end self-end">
-          <a href="#">Edit</a>
+          <Link to="/account/edit">Edit</Link>
         </div>
       </div>
 
