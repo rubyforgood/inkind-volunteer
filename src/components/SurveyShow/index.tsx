@@ -65,7 +65,7 @@ export const SurveyShow = (): JSX.Element | null => {
         return <MultipleSelectionOption options={question.options} onAnswer={setAnswer} />
       }
     } else {
-      return <TextQuestion />
+      return <TextQuestion onAnswer={setAnswer} />
     }
   }
 
