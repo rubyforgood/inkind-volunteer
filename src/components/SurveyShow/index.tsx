@@ -17,7 +17,7 @@ interface SurveyShowProps {
 
 export const SurveyShow = (): JSX.Element | null => {
   const history = useHistory()
-  const [ answer, setAnswer ] = useState<[number] | string>()
+  const [ answer, setAnswer ] = useState<[string] | string>()
   const [ currentQuestionIndex, setCurrentQuestionIndex ] = useState<number>(0)
   const { surveyResponseId, studentId } = useParams<SurveyShowProps>()
   const { data, loading } = useQuery<GetSurveyResponse>(GetSurveyResponseQuery, { variables: { id: surveyResponseId }})
@@ -36,6 +36,7 @@ export const SurveyShow = (): JSX.Element | null => {
       history.push(`/student/${studentId}`)
     } else {
       setCurrentQuestionIndex(currentQuestionIndex + 1)
+      setAnswer(undefined)
     }
   }
 
@@ -44,6 +45,7 @@ export const SurveyShow = (): JSX.Element | null => {
       history.push(`/student/${studentId}`)
     } else {
       setCurrentQuestionIndex(currentQuestionIndex - 1)
+      setAnswer(undefined)
     }
   }
 
@@ -60,7 +62,7 @@ export const SurveyShow = (): JSX.Element | null => {
         return <SingleSelectionOption options={question.options} onAnswer={setAnswer} />
       }
       if (question.type == "SurveyMultiSelectQuestion") {
-        return <MultipleSelectionOption options={question.options} />
+        return <MultipleSelectionOption options={question.options} onAnswer={setAnswer} />
       }
     } else {
       return <TextQuestion />
