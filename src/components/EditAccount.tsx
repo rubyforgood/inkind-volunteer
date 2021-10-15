@@ -25,7 +25,7 @@ export const EditAccount = ({
   const history = useHistory()
   const onSubmit = (data: VolunteerInput) => {
     updateUser({ variables: { data }}).then(() => {
-      history.push("/account/edit/success")
+      history.push("/account/edit/success?text=Your profile was successfully updated.")
     }).catch((err) => {
       console.log(err)
     })

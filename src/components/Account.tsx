@@ -47,7 +47,7 @@ export const Account = ({
       </section>
 
       <h2 className="text-xl text-center mt-14">Security</h2>
-      <a href="#" className="btn mt-5 disabled">Change Password</a>
+      <Link to="/account/edit-password" className="btn mt-5">Change Password</Link>
     </>
   )
 }
