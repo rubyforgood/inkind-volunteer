@@ -9,20 +9,17 @@ interface MultipleSelectionOptionProps {
 
 export const MultipleSelectionOption = ({ options, onAnswer }: MultipleSelectionOptionProps): JSX.Element | null => {
   const onSelectAnswer = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const changedOption = event.target.value
-    console.log(changedOption)
+    const selectedOption = event.target.value
+
     onAnswer((currentOptions: any) => {
-      console.log("currentOptions", currentOptions)
-      const newOptions = currentOptions ? currentOptions : []
+      const currentOptionsSet = new Set(currentOptions)
+      if (currentOptionsSet.has(selectedOption)) {
+        currentOptionsSet.delete(selectedOption)
+      } else {
+        currentOptionsSet.add(selectedOption)
+      }
 
-      // if (newOptions.include(changedOption)) {
-        // newOptions.filter((item: string) => item != changedOption)
-      // } else {
-        newOptions.push(changedOption)
-      // }
-
-      console.log("newOptions:", newOptions)
-      return newOptions
+      return Array.from(currentOptionsSet)
     })
   }
 
