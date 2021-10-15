@@ -3,7 +3,6 @@ import { useQuery, useMutation } from "@apollo/client"
 import { useParams, useHistory } from "react-router-dom"
 
 import { CreateSurveyQuestionResponseMutation } from "graphql/mutations/CreateSurveyQuestionResponse"
-import { CreateSurveyQuestionResponse } from "graphql/mutations/__generated__/CreateSurveyQuestionResponse"
 
 import { GetSurveyResponseQuery } from "graphql/queries/GetSurveyResponse"
 import { GetSurveyResponse, GetSurveyResponse_surveyResponse_survey_questions } from "graphql/queries/__generated__/GetSurveyResponse"

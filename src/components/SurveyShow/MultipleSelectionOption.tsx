@@ -1,17 +1,15 @@
-import { useState } from "react"
 import { GetSurvey_survey_questions_options } from "graphql/queries/__generated__/GetSurvey"
 
 interface MultipleSelectionOptionProps {
   options: GetSurvey_survey_questions_options[],
   onAnswer: any,
-  // onAnswer: (value: string[]) => void,
 }
 
 export const MultipleSelectionOption = ({ options, onAnswer }: MultipleSelectionOptionProps): JSX.Element | null => {
   const onSelectAnswer = (event: React.ChangeEvent<HTMLInputElement>) => {
     const selectedOption = event.target.value
 
-    onAnswer((currentOptions: any) => {
+    onAnswer((currentOptions: string) => {
       const currentOptionsSet = new Set(currentOptions)
       if (currentOptionsSet.has(selectedOption)) {
         currentOptionsSet.delete(selectedOption)
