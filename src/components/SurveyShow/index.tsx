@@ -1,6 +1,9 @@
 import { useState } from "react"
-import { useQuery } from "@apollo/client"
+import { useQuery, useMutation } from "@apollo/client"
 import { useParams, useHistory } from "react-router-dom"
+
+import { CreateSurveyQuestionResponseMutation } from "graphql/mutations/CreateSurveyQuestionResponse"
+import { CreateSurveyQuestionResponse } from "graphql/mutations/__generated__/CreateSurveyQuestionResponse"
 
 import { GetSurveyResponseQuery } from "graphql/queries/GetSurveyResponse"
 import { GetSurveyResponse, GetSurveyResponse_surveyResponse_survey_questions } from "graphql/queries/__generated__/GetSurveyResponse"
@@ -21,6 +24,7 @@ export const SurveyShow = (): JSX.Element | null => {
   const [ currentQuestionIndex, setCurrentQuestionIndex ] = useState<number>(0)
   const { surveyResponseId, studentId } = useParams<SurveyShowProps>()
   const { data, loading } = useQuery<GetSurveyResponse>(GetSurveyResponseQuery, { variables: { id: surveyResponseId }})
+  const [ createSurveyQuestionResponse ] = useMutation(CreateSurveyQuestionResponseMutation)
 
   if (loading || !data) return null
 
@@ -50,9 +54,24 @@ export const SurveyShow = (): JSX.Element | null => {
   }
 
   const onNext = () => {
-    // save answer to DB
-    console.log("currentQuestion: ", currentQuestion)
-    console.log("answer: ", answer)
+    let reply, options
+
+    if (currentQuestion.type == "SurveyTextQuestion") {
+      reply = answer
+      options = []
+    } else {
+      reply = null
+      options = answer
+    }
+    createSurveyQuestionResponse({
+      variables: {
+        surveyResponseId: surveyResponseId,
+        questionId: currentQuestion.id,
+        optionIds: options,
+        reply: reply
+      }
+    })
+
     goToNextQuestion()
   }
 
