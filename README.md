@@ -1,3 +1,6 @@
+[![test](https://github.com/rubyforgood/inkind-volunteer/workflows/test/badge.svg)](https://github.com/rubyforgood/inkind-volunteer/actions/workflows/rspec.yml)
+[![lint](https://github.com/rubyforgood/inkind-volunteer/actions/workflows/lint.yml/badge.svg)](https://github.com/rubyforgood/inkind-volunteer/actions/workflows/lint.yml)
+
 # InKind - Supporting Community Education Partnerships
 
 This repository is the frontend code for an application named InKind, which is a [Ruby For Good](https://rubyforgood.org/) project serving [Community Education Partnerships](https://www.cep.ngo/) (CEP).
