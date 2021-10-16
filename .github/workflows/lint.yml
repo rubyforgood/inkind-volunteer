@@ -1,4 +1,4 @@
-name: lint
+name: eslint & check-types
 
 on:
   push:
