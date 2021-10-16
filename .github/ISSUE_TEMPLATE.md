@@ -24,4 +24,4 @@ Describe an overview of the problem. Provide a general description of the proble
 
 -------
 
-The goal here is to minimize the amount of clarification that a user needs in order to get started on the work, as well as reducing the likelihood that a lengthy PR discsussion about the scope of work ensues. This whole project is volunteer-driven, on both sides, so we want to communicate expectations and needs as clearly as possible up front.
+The goal here is to minimize the amount of clarification that a user needs in order to get started on the work, as well as reducing the likelihood that a lengthy PR discussion about the scope of work ensues. This whole project is volunteer-driven, on both sides, so we want to communicate expectations and needs as clearly as possible up front.
