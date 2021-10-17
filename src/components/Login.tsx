@@ -25,21 +25,14 @@ export const Login = (): JSX.Element => {
     },
   })
 
-  if (error) {
-    return (
-      <p>
-        Error!
-        <pre>{JSON.stringify(error.clientErrors, null, "  ")}</pre>
-      </p>
-    )
-  }
-
   return (
     <section className="text-center h-screen w-full flex justify-center items-center bg-gradient-to-b from-login-gradient-top via-login-gradient-middle to-login-gradient-bottom">
       <div className="w-full max-w-md">
         <h2 className="mt-6 text-center text-5xl mb-6 font-extrabold font-tenor uppercase text-white">
           InKind
         </h2>
+
+        {error && <div className="bg-yellow-700 bg-opacity-50 rounded-lg">{error.message}</div>}
 
         <form className="px-2 py-8 pt-8">
           <div className="px-2 pb-4">
