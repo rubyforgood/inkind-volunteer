@@ -20,6 +20,7 @@ import { Account } from "./Account"
 import { EditAccount } from "./EditAccount"
 import { EditAccountPassword } from "./EditAccountPassword"
 import { EditAccountSuccess } from "./EditAccountSuccess"
+import { SessionScheduler } from "./SessionScheduler/index"
 
 interface MainNavProps {
   user: User;
@@ -62,6 +63,9 @@ export const MainNav = ({ user }: MainNavProps): JSX.Element => {
           </ul>
         </nav>
         <Switch>
+          <Route path="/student/:studentId/survey/:surveyResponseId/schedule">
+            <SessionScheduler />
+          </Route>
           <Route path="/student/:studentId/survey/:surveyResponseId">
             <SurveyShow />
           </Route>
