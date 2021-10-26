@@ -19,7 +19,7 @@ Thanks for checking us out!
 
 Please feel encouraged to join us on Slack! You can sign up at https://rubyforgood.herokuapp.com
 
-We're in #team-inkind
+We're in the `#team-inkind` channel.
 
 # Development
 
