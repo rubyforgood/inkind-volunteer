@@ -68,5 +68,5 @@ When you make a change that grabs additional fields from a GraphQL query, OR mak
 
 ### `yarn schema`
 
-1. Make sure the [inkind-admin project](https://github.com/rubyforgood/inkind-admin) is running on your local development machine (`bin/rails c`).
+1. Make sure the [inkind-admin project](https://github.com/rubyforgood/inkind-admin) is running on your local development machine (`bin/rails s`).
 2. Run `yarn schema` to regenerate all graphql Typescript files.
