@@ -9,8 +9,8 @@ import { createMemoryHistory } from 'history'
 
 test("renders student section", async () => {
   const date = new Date()
-  const additionOfYears = 13
-  date.setFullYear(date.getFullYear() - additionOfYears)
+  const subtractionOfYears = 13
+  date.setFullYear(date.getFullYear() - subtractionOfYears)
   const formattedDate = date.toISOString().slice(0,10)
 
   const students: Student[] = [{ name: "John Smith", dateOfBirth: formattedDate }]
