@@ -43,7 +43,7 @@ If you are unfamiliar with GraphQL, there is no better time to learn. [HowToGrap
 ### Install/Setup InKind Backend
 
 1. Proceed to the [installation instructions on `inkind-admin`](https://github.com/rubyforgood/inkind-admin#installation) and work your way down to the server instructions.
-1. After you've completed backend installations, start a rails server with `bin/rails s` and leave it running.
+1. After you've completed backend installations, start a rails server with `bin/server` and leave it running.
 
 ### Start project
 
@@ -68,5 +68,5 @@ When you make a change that grabs additional fields from a GraphQL query, OR mak
 
 ### `yarn schema`
 
-1. Make sure the [inkind-admin project](https://github.com/rubyforgood/inkind-admin) is running on your local development machine (`bin/rails c`).
+1. Make sure the [inkind-admin project](https://github.com/rubyforgood/inkind-admin) is running on your local development machine (`bin/server`).
 2. Run `yarn schema` to regenerate all graphql Typescript files.
