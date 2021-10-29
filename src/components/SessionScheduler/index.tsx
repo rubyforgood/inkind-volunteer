@@ -59,37 +59,41 @@ export const SessionScheduler = (): JSX.Element => {
                 <div className="flex flex-col text-left">
                   <label htmlFor="field-30-mins">
                     <input
-                        className="my-4"
+                        className="my-4 mr-3"
                         id="field-30-mins"
                         type="radio"
                         value="30 minutes"
+                        {...register("duration")}
                     />
                     30 minutes
                   </label>
                   <label htmlFor="field-60-mins">
                       <input
-                          className="my-4"
+                          className="my-4 mr-3"
                           id="field-60-mins"
                           type="radio"
                           value="60 minutes"
+                          {...register("duration")}
                       />
                       60 minutes
                   </label>
                   <label htmlFor="field-90-mins">
                       <input
-                          className="my-4"
+                          className="my-4 mr-3"
                           id="field-90-mins"
                           type="radio"
                           value="90 minutes"
+                          {...register("duration")}
                       />
                       90 minutes
                   </label>
                   <label htmlFor="field-other">
                       <input
-                          className="my-4"
+                          className="my-4 mr-3"
                           id="field-other"
                           type="radio"
                           value="other"
+                          {...register("duration")}
                       />
                       Other
                   </label>
@@ -102,3 +106,5 @@ export const SessionScheduler = (): JSX.Element => {
     </div>
   )
 }
+
+
