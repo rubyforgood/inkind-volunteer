@@ -14,8 +14,7 @@ interface ScheduleInput {
 
 export const SessionScheduler = (): JSX.Element => {
   const [showDurationInput, setShowDurationInput] = useState(false)
-  const [selectedDuration, setSelectedDuration] = useState<string>("Select session duration")
-  const { control, register, handleSubmit, formState: { errors } } = useForm<ScheduleInput>()
+  const { control, register, handleSubmit } = useForm<ScheduleInput>()
 
   const toggleShowDuration = () => setShowDurationInput(!showDurationInput)
   const onSubmit = (data: ScheduleInput) => console.log(data)
@@ -32,7 +31,7 @@ export const SessionScheduler = (): JSX.Element => {
                 name={"date"}
                 render={({ field }) => (
                   <DatePicker
-                      className="mb-4 shadow appearance-none border rounded w-full py-4 px-3 text-neutral-600 leading-tight focus:outline-none focus:shadow-outline"
+                      className="bg-white shadow appearance-none border rounded w-full py-4 px-3 text-neutral-600 leading-tight focus:outline-none focus:shadow-outline mb-4"
                       onChange={(date) => field.onChange(date)}
                       placeholderText="Select date"
                       popperPlacement="auto"
@@ -55,50 +54,48 @@ export const SessionScheduler = (): JSX.Element => {
               </div>
             </div>
             {showDurationInput && (
-              <>
-                <div className="flex flex-col text-left">
-                  <label htmlFor="field-30-mins">
+              <div className="flex flex-col text-left">
+                <label htmlFor="field-30-mins">
+                  <input
+                      className="my-4 mr-3"
+                      id="field-30-mins"
+                      type="radio"
+                      value="30 minutes"
+                      {...register("duration")}
+                  />
+                  30 minutes
+                </label>
+                <label htmlFor="field-60-mins">
                     <input
                         className="my-4 mr-3"
-                        id="field-30-mins"
+                        id="field-60-mins"
                         type="radio"
-                        value="30 minutes"
+                        value="60 minutes"
                         {...register("duration")}
                     />
-                    30 minutes
-                  </label>
-                  <label htmlFor="field-60-mins">
-                      <input
-                          className="my-4 mr-3"
-                          id="field-60-mins"
-                          type="radio"
-                          value="60 minutes"
-                          {...register("duration")}
-                      />
-                      60 minutes
-                  </label>
-                  <label htmlFor="field-90-mins">
-                      <input
-                          className="my-4 mr-3"
-                          id="field-90-mins"
-                          type="radio"
-                          value="90 minutes"
-                          {...register("duration")}
-                      />
-                      90 minutes
-                  </label>
-                  <label htmlFor="field-other">
-                      <input
-                          className="my-4 mr-3"
-                          id="field-other"
-                          type="radio"
-                          value="other"
-                          {...register("duration")}
-                      />
-                      Other
-                  </label>
-                </div>
-              </>
+                    60 minutes
+                </label>
+                <label htmlFor="field-90-mins">
+                    <input
+                        className="my-4 mr-3"
+                        id="field-90-mins"
+                        type="radio"
+                        value="90 minutes"
+                        {...register("duration")}
+                    />
+                    90 minutes
+                </label>
+                <label htmlFor="field-other">
+                    <input
+                        className="my-4 mr-3"
+                        id="field-other"
+                        type="radio"
+                        value="other"
+                        {...register("duration")}
+                    />
+                    Other
+                </label>
+              </div>
             )}
           </div>
         </form>
