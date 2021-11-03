@@ -1,0 +1,46 @@
+input,
+input::placeholder {
+  color: #546E7A;
+  font-size: 16px;
+}
+
+div.react-datepicker__header {
+  background-color: white;
+  border-bottom: none;
+
+  .react-datepicker__current-month {
+    color: #FF3B30
+  }
+
+  .react-datepicker__day-name {
+    color: rgba(60, 60, 67, 0.3);
+    text-transform: uppercase;
+  }
+
+}
+
+div.react-datepicker__week {
+  & > div.react-datepicker__day {
+    color: #FF3B30;
+
+    &.react-datepicker__day--outside-month {
+      color: white;
+    }
+
+    &.react-datepicker__day--selected {
+      background-color: rgba(60, 60, 67, 0.3);
+    }
+  }
+}
+
+.submit-button {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hide { visibility: collapse }
+.show { visibility: visible }
