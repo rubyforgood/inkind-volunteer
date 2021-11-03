@@ -19,12 +19,17 @@ export const SessionScheduler = (): JSX.Element => {
   const toggleShowDuration = () => setShowDurationInput(!showDurationInput)
   const onSubmit = (data: ScheduleInput) => console.log(data)
 
+  const durationOptions = ["30", "45", "60", "75", "90"]
+
   return (
     <div className="text-center w-full flex items-center flex-col px-4 py-8 pt-8 text-neutral-600">
       <div className="w-full">
         <h1 className="text-lg py-2" style={{fontSize: "24px"}}>Enter Date and Time</h1>
         <p className="text-lg py-2 text-left" style={{fontSize: "20px"}}>Enter your session date and duration. Round up to the nearest 15 mins, if necessary.</p>
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form
+            className="h-screen"
+            onSubmit={handleSubmit(onSubmit)}
+        >
           <div className="my-4">
             <Controller
                 control={control}
@@ -55,49 +60,30 @@ export const SessionScheduler = (): JSX.Element => {
             </div>
             {showDurationInput && (
               <div className="flex flex-col text-left">
-                <label htmlFor="field-30-mins">
-                  <input
-                      className="my-4 mr-3"
-                      id="field-30-mins"
-                      type="radio"
-                      value="30 minutes"
-                      {...register("duration")}
-                  />
-                  30 minutes
-                </label>
-                <label htmlFor="field-60-mins">
+                {durationOptions.map(option => (
+                  <label
+                      htmlFor={`field-${option}-mins`}
+                      key={option}
+                  >
                     <input
                         className="my-4 mr-3"
-                        id="field-60-mins"
+                        id={`field-${option}-mins`}
                         type="radio"
-                        value="60 minutes"
+                        value={`${option} minutes`}
                         {...register("duration")}
                     />
-                    60 minutes
-                </label>
-                <label htmlFor="field-90-mins">
-                    <input
-                        className="my-4 mr-3"
-                        id="field-90-mins"
-                        type="radio"
-                        value="90 minutes"
-                        {...register("duration")}
-                    />
-                    90 minutes
-                </label>
-                <label htmlFor="field-other">
-                    <input
-                        className="my-4 mr-3"
-                        id="field-other"
-                        type="radio"
-                        value="other"
-                        {...register("duration")}
-                    />
-                    Other
-                </label>
+                    {`${option} minutes`}
+                  </label>
+                ))}
               </div>
             )}
           </div>
+          <button
+              className="bg-primary-500 text-white rounded py-3 px-20 bottom-10"
+              type="submit"
+          >
+            SUBMIT
+          </button>
         </form>
       </div>
     </div>
