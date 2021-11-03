@@ -32,3 +32,15 @@ div.react-datepicker__week {
     }
   }
 }
+
+.submit-button {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hide { visibility: collapse }
+.show { visibility: visible }
