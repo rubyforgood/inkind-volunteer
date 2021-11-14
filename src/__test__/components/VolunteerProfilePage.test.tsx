@@ -6,11 +6,12 @@ import { User } from "models/User"
 import { BrowserRouter as Router } from 'react-router-dom'
 
 test("renders the volunteer's profile page", async () => {
+  const fillAccountIcon = (a: boolean) => undefined
   const user: User = { firstName: "John", lastName: "Smith", phoneNumber: "111-222-3333", email: "john@smith.com" }
 
   render(
     <Router>
-      <Account user={user} />
+      <Account fillAccountIcon={fillAccountIcon} user={user} />
     </Router>
   )
   await waitFor(() => {
