@@ -7,6 +7,7 @@ import { User } from "models/User"
 import { Avatar } from "./partials/Avatar"
 
 interface AccountProps {
+  fillAccountIcon: (a: boolean) => void;
   user: User;
 }
 
@@ -18,8 +19,10 @@ interface VolunteerInput {
 }
 
 export const EditAccount = ({
+  fillAccountIcon,
   user,
 }: AccountProps): JSX.Element => {
+  fillAccountIcon(false)
   const { register, handleSubmit, formState: { errors } } = useForm<VolunteerInput>()
   const [updateUser, { loading }] = useMutation(updateUserMutation)
   const navigate = useNavigate()

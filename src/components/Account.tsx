@@ -5,12 +5,15 @@ import { setToken } from "lib/authentication"
 import { Avatar } from "./partials/Avatar"
 
 interface AccountProps {
+  fillAccountIcon: (a: boolean) => void;
   user: User;
 }
 
 export const Account = ({
+  fillAccountIcon,
   user,
 }: AccountProps): JSX.Element => {
+  fillAccountIcon(true)
 
   const clearSession = () => {
     setToken("")

@@ -11,7 +11,12 @@ import { getAge } from "utils/getAge"
 import { SessionItem } from "./partials/SessionItem"
 import { CreateSurveyResponse } from "graphql/mutations/CreateSurveyResponse"
 
-export const StudentShow = (): JSX.Element | null => {
+interface StudentShowProps {
+  fillHomeIcon: (a: boolean) => void;
+}
+
+export const StudentShow = ({ fillHomeIcon }: StudentShowProps): JSX.Element | null => {
+  fillHomeIcon(false)
   const { id } = useParams<'id'>()
   const navigate = useNavigate()
   const { data, loading } = useQuery<GetStudent>(GetStudentQuery, { variables: { id }})

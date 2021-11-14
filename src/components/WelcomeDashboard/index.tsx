@@ -10,12 +10,15 @@ import { StudentSection } from "./StudentSection"
 import { SessionSection } from "./SessionSection"
 
 interface WelcomeDashboardProps {
+  fillHomeIcon: (a: boolean) => void;
   user: User;
 }
 
 export const WelcomeDashboard = ({
+  fillHomeIcon,
   user,
 }: WelcomeDashboardProps): JSX.Element => {
+  fillHomeIcon(true)
   const { data, loading, error } = useQuery<GetStudents>(GetStudentsQuery)
 
   if (loading) { return <div>Loading ....</div> }

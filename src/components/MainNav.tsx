@@ -27,16 +27,16 @@ interface MainNavProps {
 }
 
 export const MainNav = ({ user }: MainNavProps): JSX.Element => {
-  const [homeIcon, setHomeIcon] = useState<boolean>(false)
-  const [accountIcon, setAccountIcon] = useState<boolean>(false)
+  const [filledHomeIcon, fillHomeIcon] = useState<boolean>(false)
+  const [filledAccountIcon, fillAccountIcon] = useState<boolean>(false)
 
   useEffect(() => {
     if (!(window.location.pathname == "/")) {
-      setHomeIcon(false)
+      fillHomeIcon(false)
     }
 
     if (!(window.location.pathname.startsWith("/account"))) {
-      setAccountIcon(false)
+      fillAccountIcon(false)
     }
   })
 
@@ -47,11 +47,11 @@ export const MainNav = ({ user }: MainNavProps): JSX.Element => {
           <ul className="flex flex-row justify-around pt-4 pb-3 px-5 bg-white">
             <li>
               <Link
-                  onClick={() => setHomeIcon(true)}
+                  onClick={() => fillHomeIcon(true)}
                   to="/"
               >
                 <div className="flex flex-col items-center text-gray-dark">
-                  { homeIcon ? (
+                  { filledHomeIcon ? (
                       <img src={String(HomeSelectedIcon,)} width="25px" height="25px" />
                     ) : (
                       <img src={String(HomeIcon,)} width="25px" height="25px" />
@@ -63,11 +63,11 @@ export const MainNav = ({ user }: MainNavProps): JSX.Element => {
             </li>
             <li>
               <Link
-                  onClick={() => setAccountIcon(true)}
+                  onClick={() => fillAccountIcon(true)}
                   to="/account"
               >
                 <div className="flex flex-col items-center text-gray-dark">
-                  {accountIcon ? (
+                  { filledAccountIcon ? (
                       <img src={String(PersonSelectedIcon,)} width="25px" height="25px" />
                     ) : (
                       <img src={String(PersonIcon,)} width="25px" height="25px" />
@@ -89,23 +89,23 @@ export const MainNav = ({ user }: MainNavProps): JSX.Element => {
               path="/student/:studentId/survey/:surveyResponseId"
           />
           <Route
-              element={<StudentShow />}
+              element={<StudentShow fillHomeIcon={fillHomeIcon} />}
               path="/student/:id"
           />
           <Route
-              element={<WelcomeDashboard user={user} />}
+              element={<WelcomeDashboard user={user} fillHomeIcon={fillHomeIcon} />}
               path="/"
           />
           <Route
-              element={<Account user={user} />}
+              element={<Account user={user} fillAccountIcon={fillAccountIcon} />}
               path="/account"
           />
           <Route
-              element={<EditAccount user={user} />}
+              element={<EditAccount user={user} fillAccountIcon={fillAccountIcon} />}
               path="/account/edit"
           />
           <Route
-              element={<EditAccountPassword user={user} />}
+              element={<EditAccountPassword user={user} fillAccountIcon={fillAccountIcon} />}
               path="/account/edit-password"
           />
           <Route

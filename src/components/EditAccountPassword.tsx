@@ -7,6 +7,7 @@ import { User } from "models/User"
 import { Avatar } from "./partials/Avatar"
 
 interface AccountProps {
+  fillAccountIcon: (a: boolean) => void;
   user: User;
 }
 
@@ -29,8 +30,10 @@ const getGraphqlInput = (data: FormFields): GraphqlInput => {
 }
 
 export const EditAccountPassword = ({
+  fillAccountIcon,
   user,
 }: AccountProps): JSX.Element => {
+  fillAccountIcon(false)
   const { register, handleSubmit, formState: { errors }, watch } = useForm()
   const navigate = useNavigate()
   const [updateUser, { loading, error }] = useMutation<GraphqlInput>(updateUserPasswordMutation, {
