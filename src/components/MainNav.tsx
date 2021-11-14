@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react"
 import {
   BrowserRouter as Router,
   Link,
@@ -26,21 +27,18 @@ interface MainNavProps {
 }
 
 export const MainNav = ({ user }: MainNavProps): JSX.Element => {
-  const homeIcon = () => {
-    if (window.location.pathname == "/") {
-      return <img src={String(HomeSelectedIcon,)} width="25px" height="25px" />
-    } else {
-      return <img src={String(HomeIcon,)} width="25px" height="25px" />
-    }
-  }
+  const [homeIcon, setHomeIcon] = useState<boolean>(false)
+  const [accountIcon, setAccountIcon] = useState<boolean>(false)
 
-  const accountIcon = () => {
-    if (window.location.pathname.startsWith("/account")) {
-      return <img src={String(PersonSelectedIcon,)} width="25px" height="25px" />
-    } else {
-      return <img src={String(PersonIcon,)} width="25px" height="25px" />
+  useEffect(() => {
+    if (!(window.location.pathname == "/")) {
+      setHomeIcon(false)
     }
-  }
+
+    if (!(window.location.pathname.startsWith("/account"))) {
+      setAccountIcon(false)
+    }
+  })
 
   return (
     <Router>
@@ -48,17 +46,33 @@ export const MainNav = ({ user }: MainNavProps): JSX.Element => {
         <nav className="fixed inset-x-0 bottom-0 mx-auto border-t-1 border-gray-light shadow-md">
           <ul className="flex flex-row justify-around pt-4 pb-3 px-5 bg-white">
             <li>
-              <Link to="/">
+              <Link
+                  onClick={() => setHomeIcon(true)}
+                  to="/"
+              >
                 <div className="flex flex-col items-center text-gray-dark">
-                  {homeIcon()}
+                  { homeIcon ? (
+                      <img src={String(HomeSelectedIcon,)} width="25px" height="25px" />
+                    ) : (
+                      <img src={String(HomeIcon,)} width="25px" height="25px" />
+                    )
+                  }
                   <small className="pt-1">Home</small>
                 </div>
               </Link>
             </li>
             <li>
-              <Link to="/account">
+              <Link
+                  onClick={() => setAccountIcon(true)}
+                  to="/account"
+              >
                 <div className="flex flex-col items-center text-gray-dark">
-                  {accountIcon()}
+                  {accountIcon ? (
+                      <img src={String(PersonSelectedIcon,)} width="25px" height="25px" />
+                    ) : (
+                      <img src={String(PersonIcon,)} width="25px" height="25px" />
+                    )
+                  }
                   <small className="pt-1">Account</small>
                 </div>
               </Link>
