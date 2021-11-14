@@ -2,6 +2,10 @@
   "name": "inkind-volunteer",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "^14.17",
+    "yarn": "^1.12.15"
+  },
   "dependencies": {
     "@apollo/client": "^3.4.13",
     "@craco/craco": "^6.1.2",
