@@ -1,5 +1,5 @@
 import { useQuery, useMutation } from "@apollo/client"
-import { useParams, useHistory } from "react-router-dom"
+import { useParams, useNavigate } from "react-router-dom"
 
 import { GetStudentQuery } from "graphql/queries/GetStudent"
 import { GetStudentSurveyResponsesQuery } from "graphql/queries/GetStudentSurveyResponses"
@@ -11,13 +11,9 @@ import { getAge } from "utils/getAge"
 import { SessionItem } from "./partials/SessionItem"
 import { CreateSurveyResponse } from "graphql/mutations/CreateSurveyResponse"
 
-interface StudentShowProps {
-  id: string
-}
-
 export const StudentShow = (): JSX.Element | null => {
-  const { id } = useParams<StudentShowProps>()
-  const history = useHistory()
+  const { id } = useParams<'id'>()
+  const navigate = useNavigate()
   const { data, loading } = useQuery<GetStudent>(GetStudentQuery, { variables: { id }})
   const { data: surveyData, loading: surveyLoading } = useQuery<GetStudentSurveyResponses>(GetStudentSurveyResponsesQuery, { variables: { id }})
   const [ createSurveyResponse ] = useMutation(CreateSurveyResponse)
@@ -31,7 +27,7 @@ export const StudentShow = (): JSX.Element | null => {
         studentId: id,
       }
     }).then(({ data: { createSurveyResponse }}) => {
-      history.push(`/student/${id}/survey/${createSurveyResponse.response.id}`)
+      navigate(`/student/${id}/survey/${createSurveyResponse.response.id}`)
     })
   }
 

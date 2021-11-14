@@ -2,8 +2,7 @@ import {
   BrowserRouter as Router,
   Link,
   Route,
-  RouteProps,
-  Switch,
+  Routes,
 } from "react-router-dom"
 
 import HomeIcon from "./icons/home.svg"
@@ -27,6 +26,22 @@ interface MainNavProps {
 }
 
 export const MainNav = ({ user }: MainNavProps): JSX.Element => {
+  const homeIcon = () => {
+    if (window.location.pathname == "/") {
+      return <img src={String(HomeSelectedIcon,)} width="25px" height="25px" />
+    } else {
+      return <img src={String(HomeIcon,)} width="25px" height="25px" />
+    }
+  }
+
+  const accountIcon = () => {
+    if (window.location.pathname.startsWith("/account")) {
+      return <img src={String(PersonSelectedIcon,)} width="25px" height="25px" />
+    } else {
+      return <img src={String(PersonIcon,)} width="25px" height="25px" />
+    }
+  }
+
   return (
     <Router>
       <div className="bg-gray-lightest h-screen">
@@ -35,65 +50,55 @@ export const MainNav = ({ user }: MainNavProps): JSX.Element => {
             <li>
               <Link to="/">
                 <div className="flex flex-col items-center text-gray-dark">
-                  <Route>
-                      {({ location }: RouteProps) => location?.pathname == "/" ? (
-                        <img src={String(HomeSelectedIcon,)} width="25px" height="25px" />
-                      ) : (
-                        <img src={String(HomeIcon,)} width="25px" height="25px" />
-                      )}
-                    </Route>
+                  {homeIcon()}
                   <small className="pt-1">Home</small>
                 </div>
               </Link>
             </li>
             <li>
-            <Link to="/account">
+              <Link to="/account">
                 <div className="flex flex-col items-center text-gray-dark">
-                  <Route>
-                    {({ location }: RouteProps) => location?.pathname.startsWith("/account") ? (
-                      <img src={String(PersonSelectedIcon,)} width="25px" height="25px" />
-                    ) : (
-                      <img src={String(PersonIcon,)} width="25px" height="25px" />
-                    )}
-                  </Route>
+                  {accountIcon()}
                   <small className="pt-1">Account</small>
                 </div>
               </Link>
             </li>
           </ul>
         </nav>
-        <Switch>
-          <Route path="/student/:studentId/survey/:surveyResponseId/schedule">
-            <SessionScheduler />
-          </Route>
-          <Route path="/student/:studentId/survey/:surveyResponseId">
-            <SurveyShow />
-          </Route>
-          <Route path="/student/:id">
-            <StudentShow />
-          </Route>
-          <Route path="/" exact>
-            <WelcomeDashboard
-                user={user}
-            />
-          </Route>
-          <Route path="/account" exact>
-            <Account
-                user={user}
-            />
-          </Route>
-          <Route path="/account/edit" exact>
-            <EditAccount
-                user={user}
-            />
-          </Route>
-          <Route path="/account/edit-password" exact>
-            <EditAccountPassword user={user} />
-          </Route>
-          <Route path="/account/edit/success" exact>
-            <EditAccountSuccess />
-          </Route>
-        </Switch>
+        <Routes>
+          <Route
+              element={<SessionScheduler />}
+              path="/student/:studentId/survey/:surveyResponseId/schedule"
+          />
+          <Route
+              element={<SurveyShow />}
+              path="/student/:studentId/survey/:surveyResponseId"
+          />
+          <Route
+              element={<StudentShow />}
+              path="/student/:id"
+          />
+          <Route
+              element={<WelcomeDashboard user={user} />}
+              path="/"
+          />
+          <Route
+              element={<Account user={user} />}
+              path="/account"
+          />
+          <Route
+              element={<EditAccount user={user} />}
+              path="/account/edit"
+          />
+          <Route
+              element={<EditAccountPassword user={user} />}
+              path="/account/edit-password"
+          />
+          <Route
+              element={<EditAccountSuccess />}
+              path="/account/edit/success"
+          />
+        </Routes>
       </div>
     </Router>
   )
