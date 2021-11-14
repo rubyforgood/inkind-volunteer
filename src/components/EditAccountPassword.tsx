@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form"
-import { Link, useHistory } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
 import { useMutation } from "@apollo/client"
 import { updateUserPasswordMutation } from "graphql/mutations/UpdateUserMutation"
@@ -7,6 +7,7 @@ import { User } from "models/User"
 import { Avatar } from "./partials/Avatar"
 
 interface AccountProps {
+  fillAccountIcon: (a: boolean) => void;
   user: User;
 }
 
@@ -29,15 +30,17 @@ const getGraphqlInput = (data: FormFields): GraphqlInput => {
 }
 
 export const EditAccountPassword = ({
+  fillAccountIcon,
   user,
 }: AccountProps): JSX.Element => {
+  fillAccountIcon(false)
   const { register, handleSubmit, formState: { errors }, watch } = useForm()
+  const navigate = useNavigate()
   const [updateUser, { loading, error }] = useMutation<GraphqlInput>(updateUserPasswordMutation, {
     onCompleted: () => {
-      history.push("/account/edit/success?text=Your password was successfully updated.")
+      navigate("/account/edit/success?text=Your password was successfully updated.")
     }
   })
-  const history = useHistory()
   const newPassword = watch("password")
   const onSubmit = (data: FormFields) => {
     updateUser({ variables: getGraphqlInput(data) })

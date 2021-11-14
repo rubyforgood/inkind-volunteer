@@ -8,13 +8,14 @@ import { User } from "models/User"
 import { BrowserRouter as Router } from 'react-router-dom'
 
 test("renders the edit volunteer password page", async () => {
+  const fillAccountIcon = (a: boolean) => undefined
   const user: User = {}
 
   render(
     <MockedProvider addTypename={false}>
       <QueryClientProvider client={new QueryClient()}>
         <Router>
-          <EditAccountPassword user={user} />
+          <EditAccountPassword fillAccountIcon={fillAccountIcon} user={user} />
         </Router>
       </QueryClientProvider>
     </MockedProvider>

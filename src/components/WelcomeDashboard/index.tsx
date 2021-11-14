@@ -1,3 +1,4 @@
+import { useEffect } from "react"
 import { useQuery } from "@apollo/client"
 
 import { GetStudentsQuery } from "graphql/queries/GetStudents"
@@ -10,12 +11,18 @@ import { StudentSection } from "./StudentSection"
 import { SessionSection } from "./SessionSection"
 
 interface WelcomeDashboardProps {
+  fillHomeIcon: (a: boolean) => void;
   user: User;
 }
 
 export const WelcomeDashboard = ({
+  fillHomeIcon,
   user,
 }: WelcomeDashboardProps): JSX.Element => {
+  useEffect(() => {
+    fillHomeIcon(true)
+  })
+
   const { data, loading, error } = useQuery<GetStudents>(GetStudentsQuery)
 
   if (loading) { return <div>Loading ....</div> }

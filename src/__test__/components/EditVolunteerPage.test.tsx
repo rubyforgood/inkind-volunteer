@@ -9,12 +9,13 @@ import { BrowserRouter as Router } from 'react-router-dom'
 
 test("renders the edit volunteer information page", async () => {
   const user: User = { firstName: "John", lastName: "Smith", phoneNumber: "111-222-3333", email: "john@smith.com" }
+  const fillAccountIcon = (a: boolean) => undefined
 
   render(
     <MockedProvider addTypename={false}>
       <QueryClientProvider client={new QueryClient()}>
         <Router>
-          <EditAccount user={user} />
+          <EditAccount fillAccountIcon={fillAccountIcon} user={user} />
         </Router>
       </QueryClientProvider>
     </MockedProvider>

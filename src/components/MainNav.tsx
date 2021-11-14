@@ -1,9 +1,9 @@
+import { useState, useEffect } from "react"
 import {
   BrowserRouter as Router,
   Link,
   Route,
-  RouteProps,
-  Switch,
+  Routes,
 } from "react-router-dom"
 
 import HomeIcon from "./icons/home.svg"
@@ -27,73 +27,92 @@ interface MainNavProps {
 }
 
 export const MainNav = ({ user }: MainNavProps): JSX.Element => {
+  const [filledHomeIcon, fillHomeIcon] = useState<boolean>(false)
+  const [filledAccountIcon, fillAccountIcon] = useState<boolean>(false)
+
+  useEffect(() => {
+    if (!(window.location.pathname == "/")) {
+      fillHomeIcon(false)
+    }
+
+    if (!(window.location.pathname.startsWith("/account"))) {
+      fillAccountIcon(false)
+    }
+  })
+
   return (
     <Router>
       <div className="bg-gray-lightest h-screen">
         <nav className="fixed inset-x-0 bottom-0 mx-auto border-t-1 border-gray-light shadow-md">
           <ul className="flex flex-row justify-around pt-4 pb-3 px-5 bg-white">
             <li>
-              <Link to="/">
+              <Link
+                  onClick={() => fillHomeIcon(true)}
+                  to="/"
+              >
                 <div className="flex flex-col items-center text-gray-dark">
-                  <Route>
-                      {({ location }: RouteProps) => location?.pathname == "/" ? (
-                        <img src={String(HomeSelectedIcon,)} width="25px" height="25px" />
-                      ) : (
-                        <img src={String(HomeIcon,)} width="25px" height="25px" />
-                      )}
-                    </Route>
+                  { filledHomeIcon ? (
+                      <img src={String(HomeSelectedIcon,)} width="25px" height="25px" />
+                    ) : (
+                      <img src={String(HomeIcon,)} width="25px" height="25px" />
+                    )
+                  }
                   <small className="pt-1">Home</small>
                 </div>
               </Link>
             </li>
             <li>
-            <Link to="/account">
+              <Link
+                  onClick={() => fillAccountIcon(true)}
+                  to="/account"
+              >
                 <div className="flex flex-col items-center text-gray-dark">
-                  <Route>
-                    {({ location }: RouteProps) => location?.pathname.startsWith("/account") ? (
+                  { filledAccountIcon ? (
                       <img src={String(PersonSelectedIcon,)} width="25px" height="25px" />
                     ) : (
                       <img src={String(PersonIcon,)} width="25px" height="25px" />
-                    )}
-                  </Route>
+                    )
+                  }
                   <small className="pt-1">Account</small>
                 </div>
               </Link>
             </li>
           </ul>
         </nav>
-        <Switch>
-          <Route path="/student/:studentId/survey/:surveyResponseId/schedule">
-            <SessionScheduler />
-          </Route>
-          <Route path="/student/:studentId/survey/:surveyResponseId">
-            <SurveyShow />
-          </Route>
-          <Route path="/student/:id">
-            <StudentShow />
-          </Route>
-          <Route path="/" exact>
-            <WelcomeDashboard
-                user={user}
-            />
-          </Route>
-          <Route path="/account" exact>
-            <Account
-                user={user}
-            />
-          </Route>
-          <Route path="/account/edit" exact>
-            <EditAccount
-                user={user}
-            />
-          </Route>
-          <Route path="/account/edit-password" exact>
-            <EditAccountPassword user={user} />
-          </Route>
-          <Route path="/account/edit/success" exact>
-            <EditAccountSuccess />
-          </Route>
-        </Switch>
+        <Routes>
+          <Route
+              element={<SessionScheduler />}
+              path="/student/:studentId/survey/:surveyResponseId/schedule"
+          />
+          <Route
+              element={<SurveyShow />}
+              path="/student/:studentId/survey/:surveyResponseId"
+          />
+          <Route
+              element={<StudentShow fillHomeIcon={fillHomeIcon} />}
+              path="/student/:id"
+          />
+          <Route
+              element={<WelcomeDashboard user={user} fillHomeIcon={fillHomeIcon} />}
+              path="/"
+          />
+          <Route
+              element={<Account user={user} fillAccountIcon={fillAccountIcon} />}
+              path="/account"
+          />
+          <Route
+              element={<EditAccount user={user} fillAccountIcon={fillAccountIcon} />}
+              path="/account/edit"
+          />
+          <Route
+              element={<EditAccountPassword user={user} fillAccountIcon={fillAccountIcon} />}
+              path="/account/edit-password"
+          />
+          <Route
+              element={<EditAccountSuccess />}
+              path="/account/edit/success"
+          />
+        </Routes>
       </div>
     </Router>
   )

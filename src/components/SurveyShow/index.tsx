@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { useQuery, useMutation } from "@apollo/client"
-import { useParams, useHistory } from "react-router-dom"
+import { useParams, useNavigate } from "react-router-dom"
 
 import { CreateSurveyQuestionResponseMutation } from "graphql/mutations/CreateSurveyQuestionResponse"
 
@@ -12,16 +12,11 @@ import { SingleSelectionOption } from "./SingleSelectionOption"
 import { MultipleSelectionOption } from "./MultipleSelectionOption"
 import { TextQuestion } from "./TextQuestion"
 
-interface SurveyShowProps {
-  surveyResponseId: string,
-  studentId: string,
-}
-
 export const SurveyShow = (): JSX.Element | null => {
-  const history = useHistory()
+  const navigate = useNavigate()
   const [ answer, setAnswer ] = useState<[string] | string>()
   const [ currentQuestionIndex, setCurrentQuestionIndex ] = useState<number>(0)
-  const { surveyResponseId, studentId } = useParams<SurveyShowProps>()
+  const { surveyResponseId, studentId } = useParams<'surveyResponseId' | 'studentId'>()
   const { data, loading } = useQuery<GetSurveyResponse>(GetSurveyResponseQuery, { variables: { id: surveyResponseId }})
   const [ createSurveyQuestionResponse ] = useMutation(CreateSurveyQuestionResponseMutation)
 
@@ -36,7 +31,7 @@ export const SurveyShow = (): JSX.Element | null => {
 
   const goToNextQuestion = () => {
     if(currentQuestionIndex + 1 == questions.length) {
-      history.push(`/student/${studentId}`)
+      navigate(`/student/${studentId}`)
     } else {
       setCurrentQuestionIndex(currentQuestionIndex + 1)
       setAnswer(undefined)
@@ -45,7 +40,7 @@ export const SurveyShow = (): JSX.Element | null => {
 
   const goToPreviousQuestion = () => {
     if(currentQuestionIndex == 0) {
-      history.push(`/student/${studentId}`)
+      navigate(`/student/${studentId}`)
     } else {
       setCurrentQuestionIndex(currentQuestionIndex - 1)
       setAnswer(undefined)
