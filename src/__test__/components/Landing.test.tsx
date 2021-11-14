@@ -137,6 +137,15 @@ const mocksAnonymous = [
 ]
 
 test("user logs in", async () => {
+  const location: Location = window.location;
+
+  delete window.location;
+
+  window.location = {
+      ...location,
+      reload: jest.fn()
+  };
+
   render(
     <MockedProvider mocks={mocksAnonymous} addTypename={false}>
       <QueryClientProvider client={new QueryClient()}>
@@ -160,6 +169,9 @@ test("user logs in", async () => {
     userEvent.type(screen.getByPlaceholderText(/password/i), "password")
     userEvent.click(signInButton)
   })
+
+  jest.restoreAllMocks();
+  window.location = location;
 })
 
 test("volunteer is logged in", async () => {
