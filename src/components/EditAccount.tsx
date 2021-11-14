@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form"
-import { Link, useHistory } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
 import { useMutation } from "@apollo/client"
 import { updateUserMutation } from "graphql/mutations/UpdateUserMutation"
@@ -22,10 +22,10 @@ export const EditAccount = ({
 }: AccountProps): JSX.Element => {
   const { register, handleSubmit, formState: { errors } } = useForm<VolunteerInput>()
   const [updateUser, { loading }] = useMutation(updateUserMutation)
-  const history = useHistory()
+  const navigate = useNavigate()
   const onSubmit = (data: VolunteerInput) => {
     updateUser({ variables: { data }}).then(() => {
-      history.push("/account/edit/success?text=Your profile was successfully updated.")
+      navigate("/account/edit/success?text=Your profile was successfully updated.")
     }).catch((err) => {
       console.log(err)
     })
