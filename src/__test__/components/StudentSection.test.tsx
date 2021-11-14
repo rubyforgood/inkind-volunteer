@@ -17,7 +17,7 @@ test("renders student section", async () => {
   const history = createMemoryHistory()
 
   renderWithQueryProvider(
-    <Router history={history}>
+    <Router location={history.location} navigator={history}>
       <StudentSection students={students} />
     </Router>
   )
