@@ -3,9 +3,11 @@
 // @generated
 // This file was automatically generated and should not be edited.
 
+
 // ====================================================
 // GraphQL mutation operation: CreateSurveyQuestionResponse
 // ====================================================
+
 
 export interface CreateSurveyQuestionResponse_createSurveyQuestionResponse_questionResponse {
   __typename: "SurveyQuestionResponse";
