@@ -3,9 +3,11 @@
 // @generated
 // This file was automatically generated and should not be edited.
 
+
 //==============================================================
 // START Enums and Input Objects
 //==============================================================
+
 
 export interface AuthProviderCredentialsInput {
   email: string;
@@ -22,3 +24,4 @@ export interface UpdateUserInput {
 //==============================================================
 // END Enums and Input Objects
 //==============================================================
+

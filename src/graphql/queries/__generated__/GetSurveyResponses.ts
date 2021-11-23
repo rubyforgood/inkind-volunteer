@@ -3,9 +3,11 @@
 // @generated
 // This file was automatically generated and should not be edited.
 
+
 // ====================================================
 // GraphQL query operation: GetSurveyResponses
 // ====================================================
+
 
 export interface GetSurveyResponses_surveyResponses_student {
   __typename: "Student";

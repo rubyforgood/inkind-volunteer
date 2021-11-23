@@ -3,11 +3,13 @@
 // @generated
 // This file was automatically generated and should not be edited.
 
+
 import { AuthProviderCredentialsInput } from "./../../../../__generated__/globalTypes";
 
 // ====================================================
 // GraphQL mutation operation: SignIn
 // ====================================================
+
 
 export interface SignIn_signInUser_user {
   __typename: "User";
