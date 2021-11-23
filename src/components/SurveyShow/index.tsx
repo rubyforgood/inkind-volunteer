@@ -3,7 +3,7 @@ import { useQuery, useMutation } from "@apollo/client"
 import { useParams, useNavigate } from "react-router-dom"
 
 import { CreateSurveyQuestionResponseMutation } from "graphql/mutations/CreateSurveyQuestionResponse"
-
+import { CreateSupportTicketMutation } from "graphql/mutations/CreateSupportTicket"
 import { GetSurveyResponseQuery } from "graphql/queries/GetSurveyResponse"
 import { GetSurveyResponse, GetSurveyResponse_surveyResponse_survey_questions } from "graphql/queries/__generated__/GetSurveyResponse"
 
@@ -20,6 +20,7 @@ export const SurveyShow = (): JSX.Element | null => {
   const { surveyResponseId, studentId } = useParams<'surveyResponseId' | 'studentId'>()
   const { data, loading } = useQuery<GetSurveyResponse>(GetSurveyResponseQuery, { variables: { id: surveyResponseId }})
   const [ createSurveyQuestionResponse ] = useMutation(CreateSurveyQuestionResponseMutation)
+  const [ createSupportTicket ] = useMutation(CreateSupportTicketMutation)
 
   if (loading || !data) return null
 
@@ -79,10 +80,13 @@ export const SurveyShow = (): JSX.Element | null => {
     goToNextQuestion(queueSupportTicket)
   }
 
-  const createSupportTicket = () => {
-    // console.log(answer)
-
-    // createSupportTicket
+  const createTicket = () => {
+    createSupportTicket({
+      variables: {
+        surveyResponseId: surveyResponseId,
+        description: answer
+      }
+    })
 
     goToNextQuestion(false)
   }
@@ -124,7 +128,7 @@ export const SurveyShow = (): JSX.Element | null => {
           />
 
           <div className="fixed bottom-20 inset-x-0 w-full grid grid-cols-2 gap-4 px-4 py-8">
-            <button className="bg-primary-500 text-neutral-50 px-5 py-3 rounded" onClick={createSupportTicket}>NEXT</button>
+            <button className="bg-primary-500 text-neutral-50 px-5 py-3 rounded" onClick={createTicket}>NEXT</button>
           </div>
         </>
         :
