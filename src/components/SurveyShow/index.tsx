@@ -133,7 +133,9 @@ export const SurveyShow = (): JSX.Element | null => {
         </>
         :
         <>
+          <p>{currentQuestion.heading}</p>
           <p>{currentQuestion.prompt}</p>
+          <p>{currentQuestion.description}</p>
 
           {renderQuestion(currentQuestion)}
 

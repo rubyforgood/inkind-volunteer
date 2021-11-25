@@ -9,7 +9,9 @@ export const GetSurveyResponseQuery = gql`
         name
         questions {
           id
+          heading
           prompt
+          description
           type
           options {
             id
