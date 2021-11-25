@@ -18,7 +18,9 @@ export interface GetSurveyResponse_surveyResponse_survey_questions_options {
 export interface GetSurveyResponse_surveyResponse_survey_questions {
   __typename: "Question";
   id: string;
+  heading: string | null;
   prompt: string;
+  description: string | null;
   type: string;
   options: GetSurveyResponse_surveyResponse_survey_questions_options[] | null;
 }
