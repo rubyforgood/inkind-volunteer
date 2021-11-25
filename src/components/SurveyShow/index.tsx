@@ -35,7 +35,7 @@ export const SurveyShow = (): JSX.Element | null => {
     if (queueSupportTicket) {
       showSupportTicketQuestion(true)
     } else if (currentQuestionIndex + 1 == questions.length) {
-      navigate(`/student/${studentId}`)
+      navigate(`/student/${studentId}/survey/${surveyResponseId}/duration`)
     } else {
       setCurrentQuestionIndex(currentQuestionIndex + 1)
       setAnswer(undefined)
