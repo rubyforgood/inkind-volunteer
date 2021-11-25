@@ -2,7 +2,7 @@ import { useState } from "react"
 import { useQuery, useMutation } from "@apollo/client"
 import { useParams, useNavigate } from "react-router-dom"
 
-import { CreateSurveyQuestionResponseMutation } from "graphql/mutations/CreateSurveyQuestionResponse"
+import { UpsertSurveyQuestionResponseMutation } from "graphql/mutations/UpsertSurveyQuestionResponse"
 import { CreateSupportTicketMutation } from "graphql/mutations/CreateSupportTicket"
 import { GetSurveyResponseQuery } from "graphql/queries/GetSurveyResponse"
 import { GetSurveyResponse, GetSurveyResponse_surveyResponse_survey_questions } from "graphql/queries/__generated__/GetSurveyResponse"
@@ -19,7 +19,7 @@ export const SurveyShow = (): JSX.Element | null => {
   const [ supportTicketQuestion, showSupportTicketQuestion ] = useState<boolean>(false)
   const { surveyResponseId, studentId } = useParams<'surveyResponseId' | 'studentId'>()
   const { data, loading } = useQuery<GetSurveyResponse>(GetSurveyResponseQuery, { variables: { id: surveyResponseId }})
-  const [ createSurveyQuestionResponse ] = useMutation(CreateSurveyQuestionResponseMutation)
+  const [ upsertSurveyQuestionResponse ] = useMutation(UpsertSurveyQuestionResponseMutation)
   const [ createSupportTicket ] = useMutation(CreateSupportTicketMutation)
 
   if (loading || !data) return null
@@ -68,7 +68,7 @@ export const SurveyShow = (): JSX.Element | null => {
       queueSupportTicket = currentQuestion?.options?.find(option => option.id === answer)?.label === "Yes"
     }
 
-    createSurveyQuestionResponse({
+    upsertSurveyQuestionResponse({
       variables: {
         surveyResponseId: surveyResponseId,
         questionId: currentQuestion.id,

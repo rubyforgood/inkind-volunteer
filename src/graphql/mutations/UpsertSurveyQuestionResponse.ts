@@ -1,8 +1,8 @@
 import { gql } from "@apollo/client"
 
-export const CreateSurveyQuestionResponseMutation = gql`
-  mutation CreateSurveyQuestionResponse($surveyResponseId: ID!, $questionId: ID!, $optionIds: [ID!], $reply: String) {
-    createSurveyQuestionResponse(
+export const UpsertSurveyQuestionResponseMutation = gql`
+  mutation UpsertSurveyQuestionResponse($surveyResponseId: ID!, $questionId: ID!, $optionIds: [ID!], $reply: String) {
+    upsertSurveyQuestionResponse(
       surveyResponseId: $surveyResponseId,
       questionId: $questionId,
       optionIds: $optionIds,
