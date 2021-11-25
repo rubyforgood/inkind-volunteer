@@ -8,17 +8,17 @@ import "react-datepicker/dist/react-datepicker.css"
 
 import TimerIcon from "../icons/timer.svg"
 
-interface ScheduleInput {
+interface DurationInput {
   date: Date | null;
   duration: string;
 }
 
-export const SessionScheduler = (): JSX.Element => {
+export const SessionDuration = (): JSX.Element => {
   const [showDurationInput, setShowDurationInput] = useState(false)
-  const { control, register, handleSubmit, formState: { isValid } } = useForm<ScheduleInput>({ mode: "onChange" })
+  const { control, register, handleSubmit, formState: { isValid } } = useForm<DurationInput>({ mode: "onChange" })
 
   const toggleShowDuration = () => setShowDurationInput(!showDurationInput)
-  const onSubmit = (data: ScheduleInput) => console.log(data)
+  const onSubmit = (data: DurationInput) => console.log(data)
 
   const durationOptions = ["30", "45", "60", "75", "90"]
 
@@ -97,5 +97,3 @@ export const SessionScheduler = (): JSX.Element => {
     </div>
   )
 }
-
-
