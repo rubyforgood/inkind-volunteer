@@ -19,7 +19,7 @@ const queryClient = new QueryClient()
 
 const uriLink = () => {
   // if (window.location.href.indexOf("inkind-volunteer.herokuapp.com") > -1) {
-    return "https://inkind-admin.herokuapp.com/graphql"
+    return "https://inkind-admining.herokuapp.com/graphql"
   // } else {
   //   return "http://localhost:3001/graphql"
   // }
