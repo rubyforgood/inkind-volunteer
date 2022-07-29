@@ -78,20 +78,14 @@ export const SessionDuration = (): JSX.Element => {
               ))}
             </div>
           </div>
-          { isValid && (
+        
             <button
-                className="bg-primary-500 text-white rounded py-3 px-20 bottom-10 submit-button"
+                className={`${isValid ? "bg-primary-500" : "bg-neutral-200"} text-white rounded py-3 px-20 bottom-10 submit-button`}
+                disabled={isValid ? false : true}
                 type="submit"
             >
               SUBMIT
             </button>
-          )}
-
-          { !isValid && (
-            <button className="bg-neutral-200 text-white rounded py-3 px-20 bottom-10  submit-button">
-              SUBMIT
-            </button>
-          )}
         </form>
       </div>
     </div>
